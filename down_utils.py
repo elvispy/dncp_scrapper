@@ -1,28 +1,40 @@
 # -*- coding: utf-8 -*-
 """
-Created on Tue Aug 20 13:13:20 2019
+Created on Mon Aug 19 22:15:56 2019
 
 @author: Hernán
 """
-#https://stackoverflow.com/questions/34338897/python-selenium-find-out-when-a-download-has-completed
-
-import time
+#From https://stackoverflow.com/questions/32123394/workflow-to-create-a-folder-if-it-doesnt-exist-already
 import os
+import errno
+import time
+from pathlib import Path
 
-def download_wait(dest_path, directory, timeout = 30):
+
+def make_path(path):
+    try:
+        os.makedirs(path)
+    except OSError as exception:
+        if exception.errno != errno.EEXIST:
+            raise
+
+
+#https://stackoverflow.com/questions/34338897/python-selenium-find-out-when-a-download-has-completed            
+def wait_rename(dest_path, directory, timeout = 30):
     """
     Wait for downloads to finish with a specified timeout.
 
     Args
     ----
     dest_path: int, defaults to None
-        The path to the folder plus the filename to move/rename.
+        The path to the destination folder.
     directory : str
         The path to the folder where the files will be downloaded.
     timeout : int
         How many seconds to wait until timing out.
     
     """
+    
     seconds = 0
     dl_complete = False
     
@@ -34,8 +46,10 @@ def download_wait(dest_path, directory, timeout = 30):
            (len(downloaded_files) >= 1):
             #Renombrar
             #https://stackoverflow.com/questions/8858008/how-to-move-a-file-in-python
+            dest_path = dest_path + os.path.basename(downloaded_files[0])
             os.rename(downloaded_files[0], dest_path)
             dl_complete = True
         seconds += 1
     
     return dl_complete
+            
