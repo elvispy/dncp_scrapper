@@ -34,11 +34,12 @@ Created on Tue Aug 20 15:44:30 2019
 import os
 import re
 import down_utils
+import selenium.webdriver.support.ui as UI
 
-#chrome_path = r"C:\python\chromedriver.exe"
-#driver = webdriver.Chrome(chrome_path)
+
 
 def obtener_datos(driver):
+    wait = UI.WebDriverWait(driver, 5000) #Capaz pasar a otra parte
     datos={
     'id_licitacion' : '//*[@id="datos_contrato"]/section[2]/div/div/div[1]/div[2]/em', 
     'fecha_firma_contrato' : '//*[@id="datos_contrato"]/section[1]/div/div/div[4]/div[2]',
@@ -89,6 +90,41 @@ def obtener_datos(driver):
     ### Navegar a la pestaña de documentos
     xp_documentos = '/html/body/div[2]/ul/li[4]/a'
     driver.find_element_by_xpath(xp_documentos).click() 
+
+    ##### Encontrar el contrato
+    #Funcion de encontrar en tabla, si no se encuentra pasar a la otra pagina si hay
+    #Si no hay pagina o sino se encuentra en ninguna pagina guardar false
+    
+    #def downl_from_table(down):
+    contrato_down = False
+    table_id = wait.until(
+            lambda driver: driver.find_element_by_tag_name('tbody'))
+    # get all of the rows in the table
+    rows = table_id.find_elements_by_tag_name("tr") 
+    for row in rows:
+        cols = row.find_elements_by_tag_name("td")
+        #print('test')
+        if cols[0].text == 'Orden de Compra o Contrato':
+            contrato_down = True
+            link = cols[3].find_element_by_tag_name("a")
+            link.click()
+            break
+    
+    if contrato_down == True:
+        directory = 'Downloads' #Carpeta default para descargar archivos. Configurado también al inciar Selenium
+        contrato_down = down_utils.wait_rename(dest_path, directory, timeout = 30)
+        contrato.update({'contrato_download' : contrato_down})
+    else:
+        contrato.update({'contrato_download' : False})
+                
+    
+    
+    #Pasar a la página 2 de la tabla de documentos
+    #xp_pagina2 = '//*[@id="documentos"]/div[2]/div[2]/div[2]/div/ul/li[3]/a'
+    #driver.find_element_by_xpath(xp_pagina2).click()
+       
+
+    
     
     
     return(contrato)

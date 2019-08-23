@@ -8,17 +8,20 @@ Created on Mon Aug 19 17:39:21 2019
 #import csv
 #from time import sleep, strftime
 from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
+#from selenium.webdriver.common.keys import Keys
 #from selenium.webdriver.support.ui import Select
 #from random import randint
-import pandas as pd
+#import pandas as pd
 #import numpy
 #import re
-import buscar_licitacion
-
-import time
 import os
+#import time
 
+import selenium.webdriver.support.ui as UI
+from random import randint
+from time import sleep
+
+import buscar_licitacion
 import datos_contrato
 
 ###### Change Download folder
@@ -28,121 +31,141 @@ chrome_options.add_experimental_option('prefs', prefs)
 driver = webdriver.Chrome(chrome_options=chrome_options)
 
 
-chrome_path = r"chromedriver.exe"
-driver = webdriver.Chrome(chrome_path)
+wait = UI.WebDriverWait(driver, 5000)
+
+#chrome_path = r"chromedriver.exe"
+#driver = webdriver.Chrome(chrome_path)
 web_url = 'https://www.contrataciones.gov.py/buscador/licitaciones.html'
 driver.get(web_url)
 
 convocante = 'Municipalidad de Ciudad del Este'
 
-buscar_licitacion(convocante)
+buscar_licitacion.buscar_licitacion(convocante, driver)
 
 
 ### Resultado de busqueda
 xp_nombres_licit = '//*[@id="licitaciones"]/ul/li/article/header/h3/a'
-xp_etapas_licit = '//*[@id="licitaciones"]/ul/li[2]/article/div/div[1]/div[1]/div[2]/em'
+xp_etapas_licit = '//*[@id="licitaciones"]/ul/li/article/div/div[1]/div[1]/div[2]/em'
 nombres_licitacion = driver.find_elements_by_xpath(xp_nombres_licit)
 etapas_licit = driver.find_elements_by_xpath(xp_etapas_licit)
 
 ## Hacer esto cada vez que se vuelve a la lista de resultados
-i = 0 #para iterar sobre resultados en nombres
+#i = 0 #para iterar sobre resultados en nombres
 for i, etapa in enumerate(etapas_licit):
+    print(i)
+    print(etapa)
+    print(etapa.text)
     if etapa.text == 'Adjudicada':
-        nombres_licitacion[i].click()
+        #nombres_licitacion[i].click()
+        #tab_url = 'https://www.contrataciones.gov.py/licitaciones/adjudicacion/contrato/355675-isabel-petrona-gomez-cabrera-2.html'
+        enlace = nombres_licitacion[i].get_attribute('href')
+        driver.execute_script("window.open('');")
+        driver.switch_to.window(driver.window_handles[1])
+        driver.get(enlace)
+        sleep(randint(2,5))
+        #En pag licitación, hacer algo
+        driver.close()
+        driver.switch_to.window(driver.window_handles[0])
+        #print("Current Page Title is : %s" %driver.title)
 
-        ###### Lo que se extrae de la página de licitaciones
-        xp_id_licitacion = '//*[@id="datos_adjudicacion"]/section/div/div/div[1]/div[2]/em'
-        xp_nombre_licitacion = '//*[@id="datos_adjudicacion"]/section/div/div/div[2]/div[2]/em'
-        xp_estado = '//*[@id="datos_adjudicacion"]/section/div/div/div[7]/div[2]/em'
-        xp_monto = '//*[@id="datos_adjudicacion"]/section/div/div/div[9]/div[2]'
-        xp_fecha_publicacion = '//*[@id="datos_adjudicacion"]/section/div/div/div[10]/div[2]'
-    
-        ####### Se navega la pestaña de Convocatoria
-#        xp_link_convocatoria = '/html/body/div[2]/div[2]/ul/li[2]/a'
-#        driver.find_element_by_xpath(xp_link_convocatoria).click() #Hacer click en convocatoria
-    
-        ##### Se crea una carpeta con el nombre de la ciudad (convocante) para guardar archivos
-        #make_sure_path_exists(convocante)
-    
-        ### Se extra el sistema de adjudicacion
-#        xp_sistema_adjudicacion = '//*[@id="datos_convocatoria"]/div[3]/div[1]/section/div/div/div[1]/div[2]'
-        #if sistema adjudicacion == Por lote, entonces guardar lista de lotes
-    
-        ##### En caso true se navega a la lista de items solicitados para guardar la lista
-#        xp_items_solicitados = '/html/body/div[2]/ul/li[3]/a'
-#        driver.find_elements_by_xpath(xp_items_solicitados).click()
-#        xp_lotes = '//*[@id="itemSolicitados"]/div/div[1]/aside/div/ul/li/a'
-#    
-#        #### Se navega a la carpeta de documentos para descargar el pliego de B y C
-#        xp_documentos_convocatoria = '/html/body/div[2]/ul/li[4]/a'
-#        driver.find_element_by_xpath(xp_documentos_convocatoria).click()
-#        
-#        ### Hay iterar sobre la tabla para encontrar el pliego y despues decargar, sino pasar a la pag 2    
-#        xp_checkbox_condiciones = '//*[@id="checkboxSeccionesEstandares"]'
-#        driver.find_element_by_xpath(xp_checkbox_condiciones).click()
-#    
-#        table_id = driver.find_element_by_tag_name('tbody')
-#        rows = table_id.find_elements_by_tag_name("tr") # get all of the rows in the table
-#    
-#        for row in rows:
-#            # Get the columns (all the column 2)        
-#            #col = row.find_elements(By.TAG_NAME, "td")[1] #note: index start from 0, 1 is col 2
-#            #print col.text #prints text from the element
-#            col = row.find_elements_by_tag_name("td")[0]
-#            if col.text == 'Pliego de bases y Condiciones':
-#                print(row.text)
-    
-        #Pasar a la página 2 de la tabla de documentos
-#        xp_pagina2 = '//*[@id="documentos"]/div[2]/div[2]/div[2]/div/ul/li[3]/a'
-#        driver.find_element_by_xpath(xp_pagina2).click()
-#       
-#        cols = row.find_elements_by_tag_name("td")
-#        link = cols[3].find_element_by_tag_name("a")
-#        link.click()
-  
-        ### Navegar a la pestaña de invitados en caso de que existan
-#        xp_invitados = '/html/body/div[2]/ul/li[6]/a'
-    
-        ### Navegar a adjudicacion
-        #Aca ya tengo xpaths al comienzo
-        
-        ##Navegar a oferentes presentados
-#        xp_oferentes_presentados = '/html/body/div[2]/ul/li[4]/a'
-        #guardar lista de oferentes presentados
-        
+
+        break
+
+#        ###### Lo que se extrae de la página de licitaciones
+#        xp_id_licitacion = '//*[@id="datos_adjudicacion"]/section/div/div/div[1]/div[2]/em'
+#        xp_nombre_licitacion = '//*[@id="datos_adjudicacion"]/section/div/div/div[2]/div[2]/em'
+#        xp_estado = '//*[@id="datos_adjudicacion"]/section/div/div/div[7]/div[2]/em'
+#        xp_monto = '//*[@id="datos_adjudicacion"]/section/div/div/div[9]/div[2]'
+#        xp_fecha_publicacion = '//*[@id="datos_adjudicacion"]/section/div/div/div[10]/div[2]'
+
 #        #Navegar a proveedores adjudicados
+        xp_proveedores_adjudicados = '/html/body/div[2]/ul/li[3]/a'
+        driver.find_element_by_xpath(xp_proveedores_adjudicados).click()
+        
+        #def downl_from_table(down):
+        table_id = wait.until(
+                lambda driver: driver.find_element_by_tag_name('tbody'))
+        # get all of the rows in the table
+        rows = table_id.find_elements_by_tag_name("tr") 
+        for row in rows:
+            col = row.find_elements_by_tag_name("td")[6]
+            link = col.find_element_by_tag_name("a").get_attribute('href')
+           
+            driver.execute_script("window.open('');")
+            driver.switch_to.window(driver.window_handles[2])
+            driver.get(link)
+            sleep(randint(2,5))
+            
+            solo_contratos = []
+            contrato_out = datos_contrato.obtener_datos(driver)
+            solo_contratos.append(contrato_out)
+                
+            driver.close()
+            driver.switch_to.window(driver.window_handles[1])
+            
+            
+            
+            print('test')
+            if col.text == 'Orden de Compra o Contrato':
+                contrato_down = True
+                cols = row.find_elements_by_tag_name("td")
+                link = cols[3].find_element_by_tag_name("a")
+                link.click()
+                break
+    
+    if contrato_down == True:
+        directory = 'Downloads' #Carpeta default para descargar archivos. Configurado también al inciar Selenium
+        contrato_down = down_utils.wait_rename(dest_path, directory, timeout = 30)
+        contrato.update({'contrato_download' : contrato_down})
+    else:
+        contrato.update({'contrato_download' : False})
+        
+        
+        
+        tab_url = 'https://www.contrataciones.gov.py/licitaciones/adjudicacion/contrato/355675-isabel-petrona-gomez-cabrera-2.html'
+        driver.execute_script("window.open('');")
+        driver.switch_to.window(driver.window_handles[1])
+        driver.get(tab_url)
+        #En pag contrato, hacer algo
+        driver.close()
+        driver.switch_to.window(driver.window_handles[0])
+        print("Current Page Title is : %s" %driver.title)
+        
+        
+        #etapas_licit = driver.find_elements_by_xpath(xp_etapas_licit)
 #        Iterar sobre tabla con empresas adjudicadas
 #        Hacer click en ver contrato
 #        Descargar: CC
-        
-        solo_contratos = []
-        contrato_out = datos_contrato.obtener_datos(driver)
-        solo_contratos.append(contrato_out)
-        
-        driver.execute_script("window.history.go(-1)")
-        sleep(randint(10,15))
-        
-        
-        #Navegar a documentos
-        #Descargar "Orden de Compra o Contrato"
-        
-        
-    
-    else:
 
 
 
 
 
-
-
-    
-
-
-
-
-el.text
-out = map(lambda x: x.text, el)
-lista = list(out)
+#        
+#        driver.execute_script("window.history.go(-1)")
+#        sleep(randint(10,15))
+#        
+#        
+#        #Navegar a documentos
+#        #Descargar "Orden de Compra o Contrato"
+#        
+#        
+#    
+#    else:
+#
+#
+#
+#
+#
+#
+#
+#    
+#
+#
+#
+#
+#el.text
+#out = map(lambda x: x.text, el)
+#lista = list(out)
 
 
