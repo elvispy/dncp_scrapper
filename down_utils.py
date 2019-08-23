@@ -40,7 +40,7 @@ def wait_rename(dest_path, directory, timeout = 30):
     
     while dl_complete == False and seconds < timeout:
         time.sleep(1)
-        chrome_temp_file = sorted(Path(directory).glob('*.part'))
+        chrome_temp_file = sorted(Path(directory).glob('*.crdownload'))
         downloaded_files = sorted(Path(directory).glob('*.*'))
         if (len(chrome_temp_file) == 0) and \
            (len(downloaded_files) >= 1):

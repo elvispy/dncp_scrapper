@@ -11,7 +11,7 @@ from selenium import webdriver
 #from selenium.webdriver.common.keys import Keys
 #from selenium.webdriver.support.ui import Select
 #from random import randint
-#import pandas as pd
+import pandas as pd
 #import numpy
 #import re
 import os
@@ -28,7 +28,7 @@ import datos_contrato
 chrome_options = webdriver.ChromeOptions()
 prefs = {'download.default_directory' : os.getcwd() + '\\Downloads'}
 chrome_options.add_experimental_option('prefs', prefs)
-driver = webdriver.Chrome(chrome_options=chrome_options)
+driver = webdriver.Chrome(options=chrome_options)
 
 
 wait = UI.WebDriverWait(driver, 5000)
@@ -38,10 +38,13 @@ wait = UI.WebDriverWait(driver, 5000)
 web_url = 'https://www.contrataciones.gov.py/buscador/licitaciones.html'
 driver.get(web_url)
 
+sleep(randint(5,10))
+
 convocante = 'Municipalidad de Ciudad del Este'
 
 buscar_licitacion.buscar_licitacion(convocante, driver)
 
+solo_contratos = []
 
 ### Resultado de busqueda
 xp_nombres_licit = '//*[@id="licitaciones"]/ul/li/article/header/h3/a'
@@ -62,14 +65,9 @@ for i, etapa in enumerate(etapas_licit):
         driver.execute_script("window.open('');")
         driver.switch_to.window(driver.window_handles[1])
         driver.get(enlace)
-        sleep(randint(2,5))
-        #En pag licitación, hacer algo
-        driver.close()
-        driver.switch_to.window(driver.window_handles[0])
-        #print("Current Page Title is : %s" %driver.title)
+        sleep(randint(5,10))
 
-
-        break
+        #break
 
 #        ###### Lo que se extrae de la página de licitaciones
 #        xp_id_licitacion = '//*[@id="datos_adjudicacion"]/section/div/div/div[1]/div[2]/em'
@@ -88,56 +86,28 @@ for i, etapa in enumerate(etapas_licit):
         # get all of the rows in the table
         rows = table_id.find_elements_by_tag_name("tr") 
         for row in rows:
-            col = row.find_elements_by_tag_name("td")[6]
-            link = col.find_element_by_tag_name("a").get_attribute('href')
+            col_acciones = row.find_elements_by_tag_name("td")[6]
+            link_contrato = col_acciones.find_element_by_tag_name("a").get_attribute('href')
            
             driver.execute_script("window.open('');")
             driver.switch_to.window(driver.window_handles[2])
-            driver.get(link)
-            sleep(randint(2,5))
+            driver.get(link_contrato)
+            sleep(randint(5,10))
             
-            solo_contratos = []
+            
             contrato_out = datos_contrato.obtener_datos(driver)
             solo_contratos.append(contrato_out)
                 
             driver.close()
             driver.switch_to.window(driver.window_handles[1])
-            
-            
-            
-            print('test')
-            if col.text == 'Orden de Compra o Contrato':
-                contrato_down = True
-                cols = row.find_elements_by_tag_name("td")
-                link = cols[3].find_element_by_tag_name("a")
-                link.click()
-                break
-    
-    if contrato_down == True:
-        directory = 'Downloads' #Carpeta default para descargar archivos. Configurado también al inciar Selenium
-        contrato_down = down_utils.wait_rename(dest_path, directory, timeout = 30)
-        contrato.update({'contrato_download' : contrato_down})
-    else:
-        contrato.update({'contrato_download' : False})
-        
-        
-        
-        tab_url = 'https://www.contrataciones.gov.py/licitaciones/adjudicacion/contrato/355675-isabel-petrona-gomez-cabrera-2.html'
-        driver.execute_script("window.open('');")
-        driver.switch_to.window(driver.window_handles[1])
-        driver.get(tab_url)
-        #En pag contrato, hacer algo
-        driver.close()
-        driver.switch_to.window(driver.window_handles[0])
-        print("Current Page Title is : %s" %driver.title)
-        
-        
+       
         #etapas_licit = driver.find_elements_by_xpath(xp_etapas_licit)
 #        Iterar sobre tabla con empresas adjudicadas
 #        Hacer click en ver contrato
 #        Descargar: CC
 
-
+        driver.close()
+        driver.switch_to.window(driver.window_handles[0])
 
 
 
@@ -168,4 +138,5 @@ for i, etapa in enumerate(etapas_licit):
 #out = map(lambda x: x.text, el)
 #lista = list(out)
 
-
+df = pd.DataFrame(solo_contratos, columns=['id_licitacion', 'fecha_firma_contrato', 'num_contrato', 'nombre_empresa', 'ruc_empresa', 'monto_adjudicado', 'titulo_contrato', 'municipio', 'codigo_contratacion', 'contrato_download'])
+df.to_csv(os.getcwd() + '\\solo_contratos.csv', encoding='utf-8',index=False)
