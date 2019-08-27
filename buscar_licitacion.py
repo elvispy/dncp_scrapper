@@ -5,7 +5,7 @@ Created on Mon Aug 19 20:14:29 2019
 @author: Hernán
 """
 from selenium.webdriver.common.keys import Keys
-from time import sleep, strftime
+from time import sleep
 
 
 def buscar_licitacion(convocante, driver):
