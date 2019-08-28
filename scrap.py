@@ -23,6 +23,7 @@ from time import sleep
 
 import buscar_licitacion
 import datos_contrato
+import datos_licitacion
 
 ###### Change Download folder
 chrome_options = webdriver.ChromeOptions()
@@ -43,7 +44,7 @@ sleep(randint(5,10))
 convocante = 'Municipalidad de Presidente Franco'
 buscar_licitacion.buscar_licitacion(convocante, driver)
 solo_contratos = [] #Lista de contratos
-
+solo_licitacion = [] 
 ### Iterar sobre los resultados en licitaciones
 existe_siguiente_pagina = True
 while existe_siguiente_pagina == True:
@@ -69,8 +70,11 @@ for i, etapa in enumerate(etapas_licit):
         sleep(randint(5,10))
 
 
-
-
+        licitacion_out = datos_licitacion.obtener_datos(driver)
+        solo_licitacion.append(licitacion_out)
+        #dff = pd.DataFrame(solo_licitacion, columns=['id_licitacion', 'nombre_licitacion', 'fecha_publicacion', 'estado', 'monto', 'sistema_adjudicacion'])
+        #dff.to_csv(os.getcwd() + '\\solo_lic.csv', encoding='utf-8',index=False)
+        
         #Navegar a proveedores adjudicados
         xp_ul_tabs = '/html/body/div[2]/ul'
         ul_tabs = driver.find_element_by_xpath(xp_ul_tabs)
