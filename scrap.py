@@ -40,8 +40,9 @@ driver.get(web_url)
 sleep(randint(5,10))
 
 
-#convocante = 'Municipalidad de Ciudad del Este'
-convocante = 'Municipalidad de Presidente Franco'
+year = '2018'
+municipio = "Hernandarias"
+convocante = 'Municipalidad de '+ municipio
 buscar_licitacion.buscar_licitacion(convocante, driver)
 solo_contratos = [] #Lista de contratos
 solo_licitacion = [] 
@@ -83,6 +84,7 @@ for i, etapa in enumerate(etapas_licit):
         #def downl_from_table(down):
         table_id = wait.until(
                 lambda driver: driver.find_element_by_tag_name('tbody'))
+        
         # get all of the rows in the table
         rows = table_id.find_elements_by_tag_name("tr")
         links_contratos = map(lambda row: row.find_elements_by_tag_name("td")[6].find_element_by_tag_name("a").get_attribute('href'), rows)
