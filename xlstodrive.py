@@ -6,6 +6,7 @@ from pydrive.auth import GoogleAuth
 from pydrive.drive import GoogleDrive
 
 import openpyxl
+from openpyxl.styles import Font, Alignment, colors
 import glob
 import datetime
 
@@ -18,8 +19,10 @@ encabezado = {
     4 :'nombre_empresa',
     5 :'nombre_licitacion',
     6 :'monto_adjudicado',
-    9:'periodo',
-    10 :'plurianual',
+    7 :'monto_ampliacion',
+    8 :'monto_fonacide',
+    9 :'periodo',
+    10:'plurianual',
     11:'categoria'
     }
 
@@ -33,25 +36,63 @@ years_id = {2014: '11k3wyoWUn19kKsF4HjTvY1klpBFoDNTH',
             2016: '1uynLY219y3Zj9BY1Q3pYLJWGBfjcdXgx',
             2015: '1EQHzifuBGjH4hIkDwApiOm7vAGaB1OPb'}
 
+#Setting style of cells in excel
+font = Font(name = 'Arial',
+            sz = 10)
 
+alignment = Alignment(horizontal = 'center',
+                      vertical = 'center',
+                      text_rotation = 0,
+                      wrap_text = False,
+                      shrink_to_fit = False,
+                      indent = 0)
 def overwrite(sheet, contratos):
     '''This function will overwrite the rows that
     are already in the excel file
     '''
-
+    len(contratos)
     #We copy because we need to give the contracts that are not in the excel file
-    copy_contratos = contratos
+    copy_contratos = []
+    
+    
+    
+    for contrato in contratos:
+        column = [sheet.cell(i, 2).value for i in range(1, 742)]
+        copy_contratos.append(contrato)
+        #IF it's on the table, lets look through them
+        condition = True
+        if not(contrato['nro_contrato'] in column):
+            condition = False
+        else:
+            row = column.index(contrato['nro_contrato'])+1
 
-    for contrato in copy_contratos:
-        if contrato['nro_contrato'] in [sheet.cell(i, 2).value for i in range(1, 742)
-                                        if not (sheet.cell(i, 2).value is None)]:
-            row = [sheet.cell(i, 2).value for i in range(1, 742)].index(contrato['nro_contrato'])
-
+        is_in_excel = False
+        
+        while condition:
+            
+            if sheet.cell(row, 1).value != contrato['id_licitacion']:
+                column[column.index(contrato['nro_contrato'])] = "lol"
+            else:
+                is_in_excel = True
+                break
+            if not (contrato['nro_contrato'] in column):
+                break
+            else:
+                row = column.index(contrato['nro_contrato'])+1
+        print("Control:")
+        print(is_in_excel)
+        
+        if is_in_excel:
+            
             for i in list(encabezado.keys()):
+                
                 sheet.cell(row, i).value =  contrato[encabezado[i]]
+                sheet.cell(row, i).font = font
+                sheet.cell(row, i).alignment = alignment
+
 
             copy_contratos.remove(contrato)
-
+    print(len(copy_contratos))
     return copy_contratos
 
 def writehere(sheet, contratos, n):
@@ -60,6 +101,8 @@ def writehere(sheet, contratos, n):
     for contrato in contratos:
         for i in list(encabezado.keys()):
             sheet.cell(n, i).value = contrato[encabezado[i]]
+            sheet.cell(n, i).font = font
+            sheet.cell(n, i).alignment = alignment
 
         n+=1
     
@@ -194,13 +237,44 @@ def upload_to_cloud(drive, year_id):
                                     'mimeType':'application/pdf'})
             file.SetContentFile(contract)
             file.Upload()
+
+        #Does the contract have ampliacion?
+
+        if os.path.isfile("./Ampliacion (CC).pdf"):
+
+            #Is the ampliacion cc in the folder?
+
+            is_amp = False
+
+            for title in elements:
+                if "ampliacion" in title:
+                    is_con =True
+
+            #If not, upload it
+            if not is_con:
+
+                ampliacion_pdf = os.listdir()
+                ampliacion_pdf = [pdf for pdf in contract if "ampliacion" in pdf.lower()][0]
     
-    
+                file = drive.CreateFile({'title':ampliacion_pdf[:-4],
+                                    'parents':[{'id':match_id}],
+                                    'mimeType':'application/pdf'})
+                file.SetContentFile(ampliacion_pdf)
+
+                file.Upload()
     
     
 
 
-def main(contratos = [], year = datetime.datetime.now().year):
+def main(contratos = [], year = datetime.datetime.now().year, exceptions = []):
+    copy_contratos = []
+    for contrato in contratos:
+        if not ("{} {}".format(contrato['id_licitacion'], contrato['nro_contrato']) in exceptions):
+            copy_contratos.append(contrato)
+
+    contratos = copy_contratos
+    del copy_contratos
+            
 
     drive = checkcredentials()
     
@@ -243,8 +317,8 @@ def main(contratos = [], year = datetime.datetime.now().year):
     book.save(xlsxData['title'])
 
     #Upload to Drive
-    #file.SetContentFile(xlsxData['title'])
-    #file.Upload()
+    file.SetContentFile(xlsxData['title'])
+    file.Upload()
 
 
     
