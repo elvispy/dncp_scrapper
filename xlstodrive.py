@@ -5,48 +5,61 @@ import json
 from pydrive.auth import GoogleAuth
 from pydrive.drive import GoogleDrive
 
-import xlwt
-import xlrd
-from xlutils.copy import copy
+import openpyxl
 import glob
 import datetime
 
+
+#Data for writing on excel
 encabezado = {
-    0 :'id_licitacion',
-    1 :'nro_contrato',
-    2 :'fecha_firma',
-    3 :'nombre_empresa',
-    4 :'nombre_licitacion',
-    5 :'monto_adjudicado',
-    8 :'periodo',
-    9 :'plurianual',
-    10:'categoria'
+    1 :'id_licitacion',
+    2 :'nro_contrato',
+    3 :'fecha_firma',
+    4 :'nombre_empresa',
+    5 :'nombre_licitacion',
+    6 :'monto_adjudicado',
+    9:'periodo',
+    10 :'plurianual',
+    11:'categoria'
     }
 
-def overwrite(w_sheet, r_sheet, contratos):
-    '''This function will overwrite the columns that
+
+#Data to upload to the cloud
+contratos_id = '14Ab05yUVz0-VH8vU83G0cIVfIgsgvUSa'
+years_id = {2014: '11k3wyoWUn19kKsF4HjTvY1klpBFoDNTH',
+            2019: '1GPJwZsigvVV1rMuKWohFrXN8sgzDykIP',
+            2018: '1nOiDDtSTXpvXfVFIIWjosnfEzLBhGExh',
+            2017: '1aq4CglVACVgU67pAY1q31F9NWFLQzxxp',
+            2016: '1uynLY219y3Zj9BY1Q3pYLJWGBfjcdXgx',
+            2015: '1EQHzifuBGjH4hIkDwApiOm7vAGaB1OPb'}
+
+
+def overwrite(sheet, contratos):
+    '''This function will overwrite the rows that
     are already in the excel file
     '''
 
+    #We copy because we need to give the contracts that are not in the excel file
     copy_contratos = contratos
 
     for contrato in copy_contratos:
-        if contrato['nro_contrato'] in [cell.value for cell in r_sheet.col(1)]:
-            row = [cell.value for cell in r_sheet.col(1)].index(contrato['nro_contrato'])
+        if contrato['nro_contrato'] in [sheet.cell(i, 2).value for i in range(1, 742)
+                                        if not (sheet.cell(i, 2).value is None)]:
+            row = [sheet.cell(i, 2).value for i in range(1, 742)].index(contrato['nro_contrato'])
 
             for i in list(encabezado.keys()):
-                w_sheet.write(row, i, contrato[encabezado[i]])
+                sheet.cell(row, i).value =  contrato[encabezado[i]]
 
             copy_contratos.remove(contrato)
 
     return copy_contratos
 
-def writehere(w_sheet, contratos, n):
+def writehere(sheet, contratos, n):
     if len(contratos) == 0:
         return None
     for contrato in contratos:
         for i in list(encabezado.keys()):
-            w_sheet.write(n, i, contrato[encabezado[i]])
+            sheet.cell(n, i).value = contrato[encabezado[i]]
 
         n+=1
     
@@ -57,28 +70,13 @@ def find_min(sheet, m):
     if m == 0:
         #if nothing to add
         return None
-    n = -1
-    error = False
-    while True:
-        #print(n)
-        try:
-            condition = all([not bool(sheet.cell(i,0).value) for i in range(n, m+n)])
-
-        except:
-            #print("inside")
-            #print(n)
-            #print("------")
-            error = True
-            break
+    n = 0
+    condition = False
+    while not condition:
         n += 1
         
-    #print("New!")
-    if error:
-        n = m+n-2
+        condition = all([not bool(sheet.cell(i,1).value) for i in range(n, m+n)])
 
-        while not bool(sheet.cell(n,0).value):
-            n -=1
-        n += 1
         
     return n
 
@@ -99,91 +97,10 @@ def checkcredentials():
         
     return drive
 
-def format_headers(w_sheet, r_sheet):
-    #Set the cell style
-    style = xlwt.easyxf('pattern: pattern solid, fore_color light_blue;\
-                    font: color white, name Arial, height 210, bold 1;\
-                    align: wrap on,vert centre, horiz center;')
-
-    # Copying format to Headers
-    for i, cell in enumerate(r_sheet.row(0)):
-        w_sheet.write(0, i, cell.value, style)
-        
-    
-    
-    
-
-
-def main(contratos = [], year = datetime.datetime.now().year):
-
-    drive = checkcredentials()
-    
-
-    hern_id = '1B3-A1aznOtuSijnf-OCvZDXPKBxYEgVr' #this is the id of the folder
-
-    #Check if there is an excel file in path destination, if so, remove it.
-    if len(glob.glob(os.getcwd() + "\\Temps\\*.xlsx")) > 0:
-        for file in glob.glob(os.getcwd() + "\\Temps\\*.xlsx"):
-            os.remove(file)
-
-    #Download the file
-    list2 = drive.ListFile(
-        {'q':"'%s' in parents and trashed=false" % hern_id}).GetList()
-    xlsxData = [a for a in list2 if "Resumen Contratos" in a['title']][0]
-
-    file = drive.CreateFile({'id':xlsxData['id']})
-
-    os.chdir(os.getcwd() + "\\Temps")
-
-    file.GetContentFile(xlsxData['title'])
-
-    #Open the file on both reading and writing mode
-    book = xlrd.open_workbook(xlsxData['title'])
-    r_sheet = book.sheet_by_index(0)
+def upload_to_cloud(drive, year_id):
 
     
     
-    #Copy the book in writing mode
-    wb = copy(book)
-    w_sheet = wb.get_sheet(0)
-    
-  
-    #Update the data
-    remaining_contratos = overwrite(w_sheet, r_sheet, contratos)
-
-    #See how much space do we need to store the data:
-    n = find_min(r_sheet, len(remaining_contratos))
-
-    #Write the remaining contratos
-    writehere(w_sheet, remaining_contratos, n)
-
-    #Format the Headers
-    format_headers(w_sheet, r_sheet)
-
-    #Update the file
-    wb.save(xlsxData['title'][:-1])
-
-    #Upload to Drive
-    #file.SetContentFile(xlsxData['title'][:-2])
-    #file.Upload()
-    
-
-    #Now Upload The Append Files, if neccesary
-    
-    contratos_id = '14Ab05yUVz0-VH8vU83G0cIVfIgsgvUSa'
-    years_id = {2014: '11k3wyoWUn19kKsF4HjTvY1klpBFoDNTH',
-                2019: '1GPJwZsigvVV1rMuKWohFrXN8sgzDykIP',
-                2018: '1nOiDDtSTXpvXfVFIIWjosnfEzLBhGExh',
-                2017: '1aq4CglVACVgU67pAY1q31F9NWFLQzxxp',
-                2016: '1uynLY219y3Zj9BY1Q3pYLJWGBfjcdXgx',
-                2015: '1EQHzifuBGjH4hIkDwApiOm7vAGaB1OPb'}
-
-    year_id = years_id[year]
-
-    
-    if os.path.isdir("./"+str(year)):
-        os.chdir("./"+str(year))
-
     #List all folders inside the year
     drive_folders = drive.ListFile({'q':"'{}' in parents and trashed=false".format(year_id)}).GetList()
 
@@ -227,7 +144,7 @@ def main(contratos = [], year = datetime.datetime.now().year):
                 name_folders_id.remove(match_id)
                 found = True
                 break
-        print(match_id)
+        
         #If not found, create a folder
         if not found:
             new_folder = drive.CreateFile({'title':folder,
@@ -245,7 +162,6 @@ def main(contratos = [], year = datetime.datetime.now().year):
 
         elements = [element['title'].lower() for element in year_folder]
 
-        #elements_id = [element['id'] for element in year_folder]
 
         #Is codigo de contratacion in the folder?
         is_cc = False
@@ -278,12 +194,68 @@ def main(contratos = [], year = datetime.datetime.now().year):
                                     'mimeType':'application/pdf'})
             file.SetContentFile(contract)
             file.Upload()
-
-    #Now let's send the file to the cloud
-    excel_fold_id = '0B2nk5yneb6l3X2R6TGU1cHBzOUk' #To the moon folder for now
-
+    
+    
+    
     
 
+
+def main(contratos = [], year = datetime.datetime.now().year):
+
+    drive = checkcredentials()
+    
+
+    hern_id = '1B3-A1aznOtuSijnf-OCvZDXPKBxYEgVr' #this is the id of the folder
+
+    #Check if there is an excel file in path destination, if so, remove it.
+    if len(glob.glob(os.getcwd() + "\\Temps\\*.xlsx")) > 0:
+        for file in glob.glob(os.getcwd() + "\\Temps\\*.xlsx"):
+            os.remove(file)
+
+    #Download the file
+    list2 = drive.ListFile(
+        {'q':"'%s' in parents and trashed=false" % hern_id}).GetList()
+    xlsxData = [a for a in list2 if "Resumen Contratos" in a['title']][0]
+
+    file = drive.CreateFile({'id':xlsxData['id']})
+
+    os.chdir("./Temps")
+
+    file.GetContentFile(xlsxData['title'])
+
+    #Open the file on both reading and writing mode
+    book = openpyxl.load_workbook(xlsxData['title'])
+    sheet = book['SoloContratos']
+
+  
+    #Update the data, if necessary
+    remaining_contratos = overwrite(sheet, contratos)
+  
+    #See how much space do we need to store the data:
+    n = find_min(sheet, len(remaining_contratos))
+ 
+    #Write the remaining contratos
+    writehere(sheet, remaining_contratos, n)
+
+    
+  
+    #Update the file
+    book.save(xlsxData['title'])
+
+    #Upload to Drive
+    #file.SetContentFile(xlsxData['title'])
+    #file.Upload()
+
+
+    
+    if os.path.isdir("./"+str(year)):
+        os.chdir("./"+str(year))
+        
+    #Now Upload The Append Files, if neccesary
+
+    year_id = years_id[year]
+    
+    upload_to_cloud(drive, year_id)
 
     
 if __name__ == '__main__':

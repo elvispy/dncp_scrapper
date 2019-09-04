@@ -96,7 +96,9 @@ def main(driver, year, path, datos):
                             "Contrato " + datos['nombre_empresa'],
                             ".pdf")
 
+
     #Buscando el codigo de contratacion
+
     xp_back_to_convocatoria = '/html/body/div[2]/div[2]/ul/li/a'
     driver.find_element_by_xpath(xp_back_to_convocatoria).click()
     sleep(2)
@@ -108,34 +110,33 @@ def main(driver, year, path, datos):
     
     datos['monto_total'] = int(datos['monto_total'][2:].replace(".", ""))
     
-    #Click to Proveedores adjudicados
-    ul_tabs = driver.find_element_by_xpath(xp_ul_tabs)
-    ul_tabs.find_element_by_link_text("Proveedores Adjudicados").click()
-
-    #wait until the table charges:
-    table_id = wait.until(
-        lambda driver: driver.find_element_by_tag_name('tbody'))
-
-    #Get all rows
-    rows = table_id.find_elements_by_tag_name("tr")
-
-    row_proveedor = find_proveedor(rows, datos)
-
-
-
-
-    sleep(0.1)
-    #Download Codigo de Contratacion
-    down_button = row_proveedor.find_elements_by_tag_name("td")[-1]
-    
-    #row_proveedor.find_element_by_tag_name("div").find_elements_by_tag_name("a")[-1].click()
-    sleep(0.1)
-    enlace = down_button.find_element_by_tag_name("ul").find_element_by_tag_name("li").find_element_by_tag_name("a").get_attribute('href')
     #ver si se puede hacer mas corto
-
-    if os.path.isfile(path + "\\" + nomenclatura + "\\Codigo Contratacion.pdf"):
+    if os.path.isfile(path + "\\" + nomenclatura + "\\Codigo de Contratacion.pdf"):
         pass
     else:
+        
+    
+        #Click to Proveedores adjudicados
+        ul_tabs = driver.find_element_by_xpath(xp_ul_tabs)
+        ul_tabs.find_element_by_link_text("Proveedores Adjudicados").click()
+
+        #wait until the table charges:
+        table_id = wait.until(
+            lambda driver: driver.find_element_by_tag_name('tbody'))
+
+        #Get all rows
+        rows = table_id.find_elements_by_tag_name("tr")
+
+        row_proveedor = find_proveedor(rows, datos)
+
+        sleep(0.1)
+        #Download Codigo de Contratacion
+        down_button = row_proveedor.find_elements_by_tag_name("td")[-1]
+    
+        #row_proveedor.find_element_by_tag_name("div").find_elements_by_tag_name("a")[-1].click()
+        sleep(0.1)
+        enlace = down_button.find_element_by_tag_name("ul").find_element_by_tag_name("li").find_element_by_tag_name("a").get_attribute('href')
+
         driver.execute_script("window.open('');")
         driver.switch_to.window(driver.window_handles[2])
         driver.get(enlace)

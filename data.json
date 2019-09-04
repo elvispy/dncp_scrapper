@@ -14,6 +14,21 @@
         "plurianual": "No",
         "proveedor": "JUAN VICENTE MARTINEZ ACU\u00d1A"
     },
+    "29-2015": {
+        "RUC": "80069521-6",
+        "categoria": "Obras de infraestructura",
+        "convocante": "Municipalidad de Hernandarias",
+        "fecha_firma": "15-09-2015",
+        "id_licitacion": 298650,
+        "monto_adjudicado": 475229324,
+        "monto_total": 475229324,
+        "nombre_empresa": "G.M. INGENIERIA S.A.",
+        "nombre_licitacion": "Construcci\u00f3n de 03 (tres) Aulas en Esc. B\u00e1s. N\u00ba 4.020 Primer Gobernador del Bo.Santa Teresa y Construcci\u00f3n de 03 (tres) Aulas en la Esc. B\u00e1s. N\u00ba 4.653 Fulgencio Yegros del Bo. Mariscal L\u00f3pez",
+        "nro_contrato": "29-2015",
+        "periodo": 2015,
+        "plurianual": "No",
+        "proveedor": "G.M. INGENIERIA S.A."
+    },
     "29/2018": {
         "RUC": "3512939-5",
         "categoria": "Obras de infraestructura",
@@ -28,6 +43,21 @@
         "periodo": 2018,
         "plurianual": "No",
         "proveedor": "Alicia Edith Medina Rodas"
+    },
+    "30-2015": {
+        "RUC": "945999-5",
+        "categoria": "Obras de infraestructura",
+        "convocante": "Municipalidad de Hernandarias",
+        "fecha_firma": "17-09-2015",
+        "id_licitacion": 298567,
+        "monto_adjudicado": 246107875,
+        "monto_total": 246107875,
+        "nombre_empresa": "ANA MARIA ALFONSO RIVEROS",
+        "nombre_licitacion": "Construcci\u00f3n de 02 (dos) Aulas y 01 (un) Ba\u00f1o en la Escuela B\u00e1sica N\u00ba 1.518 Inmaculada Coraz\u00f3n de Mar\u00eda del Barrio Santo Domingo.-",
+        "nro_contrato": "30-2015",
+        "periodo": 2015,
+        "plurianual": "No",
+        "proveedor": "ANA MARIA ALFONSO RIVEROS"
     },
     "30/2018": {
         "RUC": "945999-5",
@@ -44,6 +74,36 @@
         "plurianual": "No",
         "proveedor": "ANA MARIA ALFONSO RIVEROS"
     },
+    "31-2015": {
+        "RUC": "3594985-6",
+        "categoria": "Obras de infraestructura",
+        "convocante": "Municipalidad de Hernandarias",
+        "fecha_firma": "17-09-2015",
+        "id_licitacion": 298571,
+        "monto_adjudicado": 385000000,
+        "monto_total": 385000000,
+        "nombre_empresa": "Serge Servicios Generales",
+        "nombre_licitacion": "Const de 02 (dos) Aulas en el Lic. Priv. Subv. Toryvet\u00e9 - Const de 01 (un) Aula y 01 (un) Ba\u00f1o en la Esc B\u00e1s N\u00ba 2.417 San Antonio y Const de 01 (un) Ba\u00f1o en la Esc B\u00e1s N\u00ba 4.817 San Blas.-",
+        "nro_contrato": "31-2015",
+        "periodo": 2015,
+        "plurianual": "No",
+        "proveedor": "Juan Carlos Torres Duarte"
+    },
+    "31-2018": {
+        "RUC": "3512939-5",
+        "categoria": "Obras de infraestructura",
+        "convocante": "Municipalidad de Hernandarias",
+        "fecha_firma": "19-11-2018",
+        "id_licitacion": 351535,
+        "monto_adjudicado": 424829768,
+        "monto_total": 424829768,
+        "nombre_empresa": "JAM Construcciones",
+        "nombre_licitacion": "Introduccion de mejoras en las Instituciones Educativas",
+        "nro_contrato": "31-2018",
+        "periodo": 2018,
+        "plurianual": "Si",
+        "proveedor": "Alicia Edith Medina Rodas"
+    },
     "31/2018": {
         "RUC": "3512939-5",
         "categoria": "Obras de infraestructura",
@@ -58,6 +118,36 @@
         "periodo": 2018,
         "plurianual": "Si",
         "proveedor": "Alicia Edith Medina Rodas"
+    },
+    "32-2015": {
+        "RUC": "3594985-6",
+        "categoria": "Obras de infraestructura",
+        "convocante": "Municipalidad de Hernandarias",
+        "fecha_firma": "17-09-2015",
+        "id_licitacion": 298640,
+        "monto_adjudicado": 285000000,
+        "monto_total": 285000000,
+        "nombre_empresa": "Serge Servicios Generales",
+        "nombre_licitacion": "Construcci\u00f3n de 03 (tres) Aulas y 01 (un) Ba\u00f1o en Escuela B\u00e1sica N\u00ba 7.785 Tembiapor\u00e1 de la Colonia Tembiapor\u00e1",
+        "nro_contrato": "32-2015",
+        "periodo": 2015,
+        "plurianual": "No",
+        "proveedor": "Juan Carlos Torres Duarte"
+    },
+    "32-2018": {
+        "RUC": "80053392-5",
+        "categoria": "Obras de infraestructura",
+        "convocante": "Municipalidad de Hernandarias",
+        "fecha_firma": "19-11-2018",
+        "id_licitacion": 351532,
+        "monto_adjudicado": 300454165,
+        "monto_total": 483137455,
+        "nombre_empresa": "MEGGA IMP.EXP. SOCIEDAD ANONIMA",
+        "nombre_licitacion": "REPARACIONES VARIAS EN DISTINTAS INSTITUCIONES EDUCATIVAS",
+        "nro_contrato": "32-2018",
+        "periodo": 2018,
+        "plurianual": "Si",
+        "proveedor": "MEGGA IMP.EXP. SOCIEDAD ANONIMA"
     },
     "32/2018": {
         "RUC": "80053392-5",
@@ -74,6 +164,36 @@
         "plurianual": "Si",
         "proveedor": "MEGGA IMP.EXP. SOCIEDAD ANONIMA"
     },
+    "33-2015": {
+        "RUC": "80069521-6",
+        "categoria": "Obras de infraestructura",
+        "convocante": "Municipalidad de Hernandarias",
+        "fecha_firma": "17-09-2015",
+        "id_licitacion": 298651,
+        "monto_adjudicado": 330895948,
+        "monto_total": 330895948,
+        "nombre_empresa": "G.M. INGENIERIA S.A.",
+        "nombre_licitacion": "Construcci\u00f3n de 03 (tres) Aulas y 01 (un) Ba\u00f1o en la Escuela B\u00e1sica N\u00ba 7.987 Virgen de Caacup\u00e9 y Construcci\u00f3n de 01 (un) Ba\u00f1o en la Escuela B\u00e1sica N\u00ba 7.879 San Expedito",
+        "nro_contrato": "33-2015",
+        "periodo": 2015,
+        "plurianual": "No",
+        "proveedor": "G.M. INGENIERIA S.A."
+    },
+    "33-2018": {
+        "RUC": "2503445-6",
+        "categoria": "Obras de infraestructura",
+        "convocante": "Municipalidad de Hernandarias",
+        "fecha_firma": "19-11-2018",
+        "id_licitacion": 351532,
+        "monto_adjudicado": 182683290,
+        "monto_total": 483137455,
+        "nombre_empresa": "LOPEZ & COMPANIA",
+        "nombre_licitacion": "REPARACIONES VARIAS EN DISTINTAS INSTITUCIONES EDUCATIVAS",
+        "nro_contrato": "33-2018",
+        "periodo": 2018,
+        "plurianual": "Si",
+        "proveedor": "ANIBAL LOPEZ DIAS"
+    },
     "33/2018": {
         "RUC": "2503445-6",
         "categoria": "Obras de infraestructura",
@@ -88,6 +208,21 @@
         "periodo": 2018,
         "plurianual": "Si",
         "proveedor": "ANIBAL LOPEZ DIAS"
+    },
+    "34-2015": {
+        "RUC": "945999-5",
+        "categoria": "Obras de infraestructura",
+        "convocante": "Municipalidad de Hernandarias",
+        "fecha_firma": "17-09-2015",
+        "id_licitacion": 298638,
+        "monto_adjudicado": 257102378,
+        "monto_total": 257102378,
+        "nombre_empresa": "ANA MARIA ALFONSO RIVEROS",
+        "nombre_licitacion": "Const. de 01 Aula en Esc. B\u00e1sica N\u00ba 1.896 Ntra. Sra. Virgen de F\u00e1tima del B\u00ba Ntra. Sra. Virgen de F\u00e1tima y Const. de 01 Aula y 01 Ba\u00f1o en la Esc. B\u00e1sica N\u00ba 3.171 San Ram\u00f3n del B\u00ba San Ram\u00f3n",
+        "nro_contrato": "34-2015",
+        "periodo": 2015,
+        "plurianual": "No",
+        "proveedor": "ANA MARIA ALFONSO RIVEROS"
     },
     "34/2018": {
         "RUC": "2952436-9",
@@ -104,6 +239,21 @@
         "plurianual": "Si",
         "proveedor": "RICARDO MEDINA OVELAR"
     },
+    "35-2015": {
+        "RUC": "1800821-6",
+        "categoria": "Obras de infraestructura",
+        "convocante": "Municipalidad de Hernandarias",
+        "fecha_firma": "17-09-2015",
+        "id_licitacion": 298637,
+        "monto_adjudicado": 299936583,
+        "monto_total": 299936583,
+        "nombre_empresa": "ANA MARIA MOREL ALFONSO",
+        "nombre_licitacion": "Const. de 01 Aula en el Col. Arnold Joanssen-Col. Acaraym\u00ed, Const. de 01 Aula en la Esc. B\u00e1sica N\u00ba 14.692-Col. Acaraym\u00ed y Const. de 01 Aula en la Es. B\u00e1sica N\u00ba 7.714 San Miguel-Col. Acaraym\u00ed",
+        "nro_contrato": "35-2015",
+        "periodo": 2015,
+        "plurianual": "No",
+        "proveedor": "ANA MARIA MOREL ALFONSO"
+    },
     "35/2018": {
         "RUC": "3526459-4",
         "categoria": "Obras de infraestructura",
@@ -118,6 +268,36 @@
         "periodo": 2018,
         "plurianual": "Si",
         "proveedor": "CARINA NU\u00d1EZ GODOY"
+    },
+    "36-2015": {
+        "RUC": "80077342-0",
+        "categoria": "Obras de infraestructura",
+        "convocante": "Municipalidad de Hernandarias",
+        "fecha_firma": "17-09-2015",
+        "id_licitacion": 298652,
+        "monto_adjudicado": 182643810,
+        "monto_total": 182643810,
+        "nombre_empresa": "J. L. INGENIERIA SA",
+        "nombre_licitacion": "Construcci\u00f3n de 01 (un) Aula en la Escuela B\u00e1sica N\u00ba 3.500 Cristo Rey del Barrio Caacupem\u00ed y Construcci\u00f3n de 01 (un) Aula en la Escuela B\u00e1sica N\u00ba 3.499 Santa B\u00e1rbara del Barrio Felix de Azara",
+        "nro_contrato": "36-2015",
+        "periodo": 2015,
+        "plurianual": "No",
+        "proveedor": "J. L. Y COMPA\u00d1IA SOCIEDAD ANONIMA"
+    },
+    "37-2015": {
+        "RUC": "80069521-6",
+        "categoria": "Obras de infraestructura",
+        "convocante": "Municipalidad de Hernandarias",
+        "fecha_firma": "17-09-2015",
+        "id_licitacion": 298653,
+        "monto_adjudicado": 339856508,
+        "monto_total": 339856508,
+        "nombre_empresa": "G.M. INGENIERIA S.A.",
+        "nombre_licitacion": "Const (dos) Aulas y (un) Ba\u00f1o Esc N\u00ba 1.295 Virgen del Rosario - Const (un) Ba\u00f1o Esc N 6.488 Ni\u00f1o Jes\u00fas de Praga y Const (un) Ba\u00f1o en el Colegio Nac Don Augusto Roa Bastos",
+        "nro_contrato": "37-2015",
+        "periodo": 2015,
+        "plurianual": "No",
+        "proveedor": "G.M. INGENIERIA S.A."
     },
     "38/2018": {
         "RUC": "2865329-7",
@@ -148,5 +328,20 @@
         "periodo": 2018,
         "plurianual": "Si",
         "proveedor": "Ruben Casco Escobar"
+    },
+    "43/2015": {
+        "RUC": "80006730-4",
+        "categoria": "Obras de infraestructura",
+        "convocante": "Municipalidad de Hernandarias",
+        "fecha_firma": "11-12-2015",
+        "id_licitacion": 300521,
+        "monto_adjudicado": 4020725608,
+        "monto_total": 4020725608,
+        "nombre_empresa": "CONSTRUCTORA ACARAY S.A.",
+        "nombre_licitacion": "Pavimentaci\u00f3n Asf\u00e1ltica - Ad Referendum",
+        "nro_contrato": "43/2015",
+        "periodo": 2015,
+        "plurianual": "Si",
+        "proveedor": "CONSTRUCTORA ACARAY S.A."
     }
 }

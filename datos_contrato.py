@@ -87,8 +87,7 @@ def obtener_datos(driver):
         except:
             pass
 
-    print(licitacion['proveedor'])
-    print(i)
+
     
     xp_name_emp = '//*[@id="datos_proveedor"]/section[1]/div/div/div[{}]/div[2]'.format(i)
     
@@ -98,11 +97,10 @@ def obtener_datos(driver):
     if name_emp == "":
         name_emp = licitacion['proveedor']
 
-    print(name_emp)
-    print("------------------")
+
 
     licitacion.update({'nombre_empresa':name_emp})
-    sleep(5)
+    sleep(0.5)
     driver.close()
     
     driver.switch_to.window(driver.window_handles[1])

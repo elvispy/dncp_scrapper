@@ -12,7 +12,7 @@ def main(dato):
     #Formatting nro de contrato
     if len(dato['nro_contrato']) < 3:
 
-        dato['nro_contrato'] = dato['nro_contrato'] + "/" + dato['periodo']
+        dato['nro_contrato'] = dato['nro_contrato'] + "/" + str(dato['periodo'])
     #Formatting categoria, to fit excel standards.
     cat = int(dato['categoria'][:2])
     if cat == 21:
