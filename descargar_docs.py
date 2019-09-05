@@ -8,6 +8,10 @@ from time import sleep
 
 import glob
 
+import PyPDF2
+
+monto_ampliacion = ""
+
 def find_proveedor(rows, datos):
     name = datos['proveedor'].lower().split(" ")
 
@@ -35,6 +39,7 @@ def move_to_download_folder(downloadPath, fileDestination,  newFileName, fileExt
             currentFile = glob.glob(downloadPath+"\\*"+fileExtension)[0]
         
             got_file = True
+            
 
         except Exception as e:
             print(e)
@@ -47,33 +52,79 @@ def move_to_download_folder(downloadPath, fileDestination,  newFileName, fileExt
    
     os.rename(currentFile, fileDestination)
 
+    
+    sleep(1)
+
+def documentos_tab(driver):
+    wait = UI.WebDriverWait(driver, 5000)
+    xp_ul_tabs = '/html/body/div[2]/ul'
+    ul_tabs = driver.find_element_by_xpath(xp_ul_tabs)
+    try:
+        ul_tabs.find_element_by_link_text("Documentos").click()
+        sleep(2)
+
+        #wait until the table charges:
+        table_id = wait.until(
+            lambda driver: driver.find_element_by_tag_name('tbody'))
+        #Get all rows
+        rows = table_id.find_elements_by_tag_name("tr")
+        #get the correct row
+        row = [element for element in rows
+           if ("contrato" in
+               element.find_element_by_tag_name("td").text.lower() )][0]
+        return row
+        
+    except Exception as e:
+        print(e)
+        return None
+
+def amplicaciones_tab(driver):
+    wait = UI.WebDriverWait(driver, 5000)
+    xp_ul_tabs = '/html/body/div[2]/ul'
+    ul_tabs = driver.find_element_by_xpath(xp_ul_tabs)
+
+    link_to_cc = ""
+    try:
+        ul_tabs.find_element_by_link_text("Modificaciones al Contrato").click()
+
+        sleep(2)
+
+        #wait until the table charges:
+        table_id = wait.until(
+            lambda driver: driver.find_element_by_tag_name('tbody'))
+        #Get all rows
+        #rows = table_id.find_elements_by_tag_name("tr")
+        xp_table = '//*[@id="modificaciones"]/div/div[1]/table/tbody/tr'
+        rows = driver.find_elements_by_xpath(xp_table)
+ 
+        row = [element for element in rows
+           if ("monto" in element.find_element_by_tag_name("td").text.lower() )][0]
+        monto_ampliacion = row.find_elements_by_tag_name("td")[-3].text
+        print("Monto ampliacion: {}".format(monto_ampliacion))
+
+        link_to_cc = row.find_elements_by_tag_name("td")[-1].find_element_by_tag_name("a").get_attribute('href')
+        
+        return link_to_cc
+
+    except Exception as e:
+        #print("------------------")
+        #print(e)
+        #print("------------------")
+        
+        return 0
+
+        
+
+        
 
 def main(driver, year, path, datos):
     wait = UI.WebDriverWait(driver, 5000) #Capaz pasar a otra parte
-
-
-
     xp_ul_tabs = '/html/body/div[2]/ul'
-    ul_tabs = driver.find_element_by_xpath(xp_ul_tabs)
-    ul_tabs.find_element_by_link_text("Documentos").click()
-    sleep(3)
 
 
-    #wait until the table charges:
-    table_id = wait.until(
-        lambda driver: driver.find_element_by_tag_name('tbody'))
-
-    #Get all rows
-    rows = table_id.find_elements_by_tag_name("tr")
-    #get the correct row
-
-
-    #[print(element.find_element_by_tag_name("td").text.lower()) for element in rows]
-
-    
-    row = [element for element in rows
-           if ("contrato" in
-               element.find_element_by_tag_name("td").text.lower() )][0]
+    row = documentos_tab(driver)
+    while row is None:
+        row = documentos_tab(driver)
 
     #Create folders
     nomenclatura = "{nro} {id_c} {name}".format(
@@ -96,6 +147,32 @@ def main(driver, year, path, datos):
                             "Contrato " + datos['nombre_empresa'],
                             ".pdf")
 
+    #See if there are ampliaciones
+
+    link_to_cc = amplicaciones_tab(driver)
+    datos.update({'monto_ampliacion':monto_ampliacion})
+    if bool(link_to_cc) and not os.path.isfile("./Temps/"+nomenclatura+"/Ampliacion (CC).pdf"):
+        driver.execute_script("window.open('');")
+
+        driver.switch_to.window(driver.window_handles[2])
+
+        driver.get(link_to_cc)
+
+        xp_relacionados = '//*[@id="datos_modificaciones_contrato"]/div/div/div/ul'
+
+        driver.find_element_by_link_text("Descargar Código de Contratación (CC)").click()
+
+        sleep(1)
+
+        move_to_download_folder(path, path + "\\" + nomenclatura + "\\",
+                            "Ampliacion (CC)",
+                            ".pdf")
+        sleep(0.1)
+        driver.switch_to.window(driver.window_handles[1])
+
+
+
+        
 
     #Buscando el codigo de contratacion
 
@@ -124,10 +201,21 @@ def main(driver, year, path, datos):
         table_id = wait.until(
             lambda driver: driver.find_element_by_tag_name('tbody'))
 
+        
         #Get all rows
         rows = table_id.find_elements_by_tag_name("tr")
 
         row_proveedor = find_proveedor(rows, datos)
+        c = 1
+        while row_proveedor is None:
+            print("Beware")
+            print(c)
+            print("--------")
+            c+=1
+            sleep(2)
+            rows = table_id.find_elements_by_tag_name("tr")
+
+            row_proveedor = find_proveedor(rows, datos)
 
         sleep(0.1)
         #Download Codigo de Contratacion
@@ -148,6 +236,64 @@ def main(driver, year, path, datos):
     
         driver.close()
         driver.switch_to.window(driver.window_handles[1])
+
+
+
+    error = False
+    monto_fonacide = "-1"
+    try:
+        pdfFile = open(path + "\\" + nomenclatura + "\\Codigo de Contratacion.pdf", 'rb')
+
+        pdfObject = PyPDF2.PdfFileReader(pdfFile)
+
+        pdfPage = pdfObject.getPage(0)
+
+        monto_fonacide = pdfPage.extractText().split("TOTAL:")[1]
+        
+        if pdfPage.extractText().split("TOTAL:")[0][-len(monto_fonacide):] != monto_fonacide:
+            print("Warning: Check Possible Error in:")
+            print(datos['id_licitacion'])
+            print(datos['nro_contrato'])
+            print("--------------------")
+            monto_fonacide = '-1'
+        elif pdfPage.extractText().split("TOTAL:")[0][-len(monto_fonacide)-3] != '3':
+            monto_fonacide = '-1'
+    except:
+
+        error = True
+    datos.update({'monto_fonacide':int(monto_fonacide.replace(",", ""))})
+
+
+
+    #check if there is an ampliacion
+    monto_ampliacion_fon = "0"
+    if link_to_cc:
+        try:
+            pdfFile = open(path + "\\" + nomenclatura + "\\Ampliacion (CC).pdf", 'rb')
+
+            pdfObject = PyPDF2.PdfFileReader(pdfFile)
+
+            pdfPage = pdfObject.getPage(0)
+
+            monto_ampliacion_fon = pdfPage.extractText().split("TOTAL:")[1]
+            if monto_ampliacion_fon[-1] == " ":
+                monto_ampliacion_fon= monto_ampliacion_fon[:-1]
+        
+            if pdfPage.extractText().split("TOTAL:")[0][-len(monto_ampliacion_fon):] != monto_ampliacion_fon:
+                print(pdfPage.extractText().split("TOTAL:")[0][-len(monto_ampliacion_fon):])
+                print(monto_ampliacion_fon)
+                print("Warning: Check Possible Error in Ampliacion:")
+                print(datos['id_licitacion'])
+                print(datos['nro_contrato'])
+                print("--------------------")
+            elif pdfPage.extractText().split("TOTAL:")[0][-len(monto_ampliacion_fon)-3] != '3':
+                monto_ampliacion_fon = '0'
+        except Exception as e:
+            print(e)
+    datos.update({'monto_fonacide':
+                  datos['monto_fonacide']+ int(monto_ampliacion_fon.replace(",", ""))})
+
+
 
     
     '''
@@ -205,4 +351,4 @@ def main(driver, year, path, datos):
     
     
     '''
-    return datos
+    return [datos, error]

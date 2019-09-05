@@ -22,7 +22,43 @@ import datos_contrato
 import descargar_docs
 import formatt
 
+solo_contratos = [] #Lista de contratos
+solo_licitacion = [] 
 
+def loop_page(driver, nombres_licitacion, etapas_licit, year, path):
+    for i, etapa in enumerate(etapas_licit):
+  
+        if etapa.text == 'Adjudicada':
+            #enter to the licitacion
+            enlace = nombres_licitacion[i].get_attribute('href')
+            driver.execute_script("window.open('');")
+            driver.switch_to.window(driver.window_handles[1])
+            driver.get(enlace)
+            sleep(3)
+
+            contrato_out = datos_contrato.obtener_datos(driver)
+            
+            contrato_out.update({'periodo':int(year)})
+            
+            contrato_out = formatt.main(contrato_out)
+            
+            #Download files and get total amount.
+            contrato_out, again = descargar_docs.main(driver, year, path,  contrato_out)
+
+            while again:
+                print("---I entered here---")
+                #Download files and get total amount, in case error ocurred
+                contrato_out, again = descargar_docs.main(driver, year, path,  contrato_out)
+
+            #Formatting Monto Adjudicado and monto total
+            try:
+                contrato_out['monto_ampliacion'] = int(contrato_out['monto_ampliacion'][2:].replace(".", "").replace(",", ""))            
+            except ValueError:
+                contrato_out['monto_ampliacion'] = 0
+            solo_contratos.append(contrato_out)
+
+            driver.close()
+            driver.switch_to.window(driver.window_handles[0])
 
 def main(municipio = "Hernandarias", year = datetime.datetime.now().year):
     #Convocante de las licitaciones
@@ -51,8 +87,7 @@ def main(municipio = "Hernandarias", year = datetime.datetime.now().year):
 
 
     buscar_contrato.buscar_contrato(convocante, year, driver)
-    solo_contratos = [] #Lista de contratos
-    solo_licitacion = [] 
+
 
         
     ### Resultado de busqueda
@@ -61,34 +96,29 @@ def main(municipio = "Hernandarias", year = datetime.datetime.now().year):
     nombres_licitacion = driver.find_elements_by_xpath(xp_nombres_licit)
     etapas_licit = driver.find_elements_by_xpath(xp_etapas_licit)
 
+    
+        
     ## Hacer esto cada vez que se vuelve a la lista de resultados
     #i = 0 #para iterar sobre resultados en nombres
-    for i, etapa in enumerate(etapas_licit):
+     
+    loop_page(driver, nombres_licitacion, etapas_licit, year, path)
+    try:
+        xp_next = '//*[@id="contratos"]/div[2]/div/div[2]/div/ul/li[3]/a'
+        driver.find_element_by_xpath(xp_next).click()
+        nombres_licitacion =  driver.find_elements_by_xpath(xp_nombres_licit)
+        etapas_licit =  driver.find_elements_by_xpath(xp_etapas_licit)
+    
+
+        loop_page(driver, nombres_licitacion, etapas_licit, year, path)
+    except Exception as e:
+        print(e)
 
         
-        if etapa.text == 'Adjudicada':
-            #enter to the licitacion
-            enlace = nombres_licitacion[i].get_attribute('href')
-            driver.execute_script("window.open('');")
-            driver.switch_to.window(driver.window_handles[1])
-            driver.get(enlace)
-            sleep(3)
 
-            contrato_out = datos_contrato.obtener_datos(driver)
-            
-            contrato_out.update({'periodo':int(year)})
-            
-            contrato_out = formatt.main(contrato_out)
-            
-            #Download files and get total amount.
-            contrato_out = descargar_docs.main(driver, year, path,  contrato_out)
-            
-            solo_contratos.append(contrato_out)
-
-            driver.close()
-            driver.switch_to.window(driver.window_handles[0])
-
+        
+    
     driver.close()
+    len(solo_contratos)
     return solo_contratos
 
 if __name__ == '__main__':

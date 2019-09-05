@@ -7,19 +7,27 @@ def main(dato):
     dato['monto_adjudicado'] = int(dato['monto_adjudicado'][2:].replace(".", ""))
 
     
+    dato['fecha_firma'] = dato['fecha_firma'].replace("-", "/")
 
+    
 
     #Formatting nro de contrato
     if len(dato['nro_contrato']) < 3:
 
         dato['nro_contrato'] = dato['nro_contrato'] + "/" + str(dato['periodo'])
+    else:
+        dato['nro_contrato'] = dato['nro_contrato'].replace("-", "/")
     #Formatting categoria, to fit excel standards.
     cat = int(dato['categoria'][:2])
-    if cat == 21:
+    if "pavime" in dato['nombre_licitacion'].lower():
+        
+        dato['categoria'] = 'Pavimentos'
+        
+    elif cat == 21:
 
         dato['categoria'] = 'Obras de infraestructura'
 
-    elif cat == 9:
+    elif cat in [9, 14]:
 
         dato['categoria'] = 'Alimentacion Escolar'
 

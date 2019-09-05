@@ -2,7 +2,8 @@ import json
 
 def main(data):
 
-    data = {dato['nro_contrato']:dato for dato in data}
+    data = {"{} {}".format(dato['id_licitacion'], dato['nro_contrato']):
+            dato for dato in data}
 
 
     try:
@@ -11,7 +12,7 @@ def main(data):
         
         data.update(already_charged)
     except:
-        print("Just in case")
+        pass
 
     with open("data.json", "w") as json_file:
         
