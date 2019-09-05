@@ -6,12 +6,11 @@ import formatt
 
 import savetojson
 
-
-year = 2014
-
+#Settings
+year = 2015
 municipio = 'Hernandarias'
-scrap_var = True #Want to scrap th website?
-up_to_cloud = False #Want to upload the data to drive?
+scrap_var = False #Want to scrap the website?
+up_to_cloud = True #Want to upload the data to drive?
 
 #This exception lists is in case there is a case my code can't handle, so it
 # can skip it write the id and the number of the contract
@@ -25,7 +24,7 @@ def main(scrap_var = True, up_to_cloud = True):
     xlstodrive.checkcredentials()
 
 
-    
+    #Maybe you already have all the data and just want to 
     if scrap_var:
         datos = scrap.main(municipio, year)
         savetojson.main(datos)
@@ -39,7 +38,7 @@ def main(scrap_var = True, up_to_cloud = True):
 
         
     if up_to_cloud:
-        xlstodrive.main(datos, year)
+        xlstodrive.main(datos, year, municipio)
 
     return datos
 

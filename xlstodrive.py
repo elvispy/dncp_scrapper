@@ -27,7 +27,7 @@ encabezado = {
     }
 
 
-#Data to upload to the cloud
+#Data to upload to the cloud (Hernandarias district
 contratos_id = '14Ab05yUVz0-VH8vU83G0cIVfIgsgvUSa'
 years_id = {2014: '11k3wyoWUn19kKsF4HjTvY1klpBFoDNTH',
             2019: '1GPJwZsigvVV1rMuKWohFrXN8sgzDykIP',
@@ -57,7 +57,7 @@ def overwrite(sheet, contratos):
     
     
     for contrato in contratos:
-        column = [sheet.cell(i, 2).value for i in range(1, 742)]
+        column = [str(sheet.cell(i, 2).value) for i in range(1, 742)]
         copy_contratos.append(contrato)
         #IF it's on the table, lets look through them
         condition = True
@@ -70,7 +70,7 @@ def overwrite(sheet, contratos):
         
         while condition:
             
-            if sheet.cell(row, 1).value != contrato['id_licitacion']:
+            if int(sheet.cell(row, 1).value) != contrato['id_licitacion']:
                 column[column.index(contrato['nro_contrato'])] = "lol"
             else:
                 is_in_excel = True
@@ -79,8 +79,8 @@ def overwrite(sheet, contratos):
                 break
             else:
                 row = column.index(contrato['nro_contrato'])+1
-        print("Control:")
-        print(is_in_excel)
+        #print("Control:")
+        #print(is_in_excel)
         
         if is_in_excel:
             
@@ -92,7 +92,7 @@ def overwrite(sheet, contratos):
 
 
             copy_contratos.remove(contrato)
-    print(len(copy_contratos))
+    #print(len(copy_contratos))
     return copy_contratos
 
 def writehere(sheet, contratos, n):
@@ -159,6 +159,7 @@ def upload_to_cloud(drive, year_id):
     local_folders = [fold.replace("-", "/") for fold in local_folders]
 
     cwd = os.getcwd()
+
     #Try to match local and
     for folder in local_folders:
         #Reset Current Working directory
@@ -239,22 +240,23 @@ def upload_to_cloud(drive, year_id):
             file.Upload()
 
         #Does the contract have ampliacion?
-
+        
         if os.path.isfile("./Ampliacion (CC).pdf"):
+           
 
             #Is the ampliacion cc in the folder?
 
             is_amp = False
 
             for title in elements:
-                if "ampliacion" in title:
-                    is_con =True
+                if "Ampliacion (CC)" in title:
+                    is_amp =True
 
             #If not, upload it
-            if not is_con:
+            if not is_amp:
 
                 ampliacion_pdf = os.listdir()
-                ampliacion_pdf = [pdf for pdf in contract if "ampliacion" in pdf.lower()][0]
+                ampliacion_pdf = [pdf for pdf in ampliacion_pdf if "ampliacion" in pdf.lower()][0]
     
                 file = drive.CreateFile({'title':ampliacion_pdf[:-4],
                                     'parents':[{'id':match_id}],
@@ -266,7 +268,7 @@ def upload_to_cloud(drive, year_id):
     
 
 
-def main(contratos = [], year = datetime.datetime.now().year, exceptions = []):
+def main(contratos = [], year = datetime.datetime.now().year, exceptions = [], municipio = "Hernandarias"):
     copy_contratos = []
     for contrato in contratos:
         if not ("{} {}".format(contrato['id_licitacion'], contrato['nro_contrato']) in exceptions):
@@ -282,8 +284,8 @@ def main(contratos = [], year = datetime.datetime.now().year, exceptions = []):
     hern_id = '1B3-A1aznOtuSijnf-OCvZDXPKBxYEgVr' #this is the id of the folder
 
     #Check if there is an excel file in path destination, if so, remove it.
-    if len(glob.glob(os.getcwd() + "\\Temps\\*.xlsx")) > 0:
-        for file in glob.glob(os.getcwd() + "\\Temps\\*.xlsx"):
+    if len(glob.glob(os.getcwd() + "\\Temps{}\\*.xlsx".format(municipio))) > 0:
+        for file in glob.glob(os.getcwd() + "\\Temps{}\\*.xlsx".format(municipio)):
             os.remove(file)
 
     #Download the file
@@ -293,7 +295,7 @@ def main(contratos = [], year = datetime.datetime.now().year, exceptions = []):
 
     file = drive.CreateFile({'id':xlsxData['id']})
 
-    os.chdir("./Temps")
+    os.chdir("./Temps{}".format(municipio))
 
     file.GetContentFile(xlsxData['title'])
 

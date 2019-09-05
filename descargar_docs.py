@@ -106,10 +106,11 @@ def ampliaciones_tab(driver, datos):
         datos.update({'monto_ampliacion':monto_ampliacion})
 
         link_to_cc = row.find_elements_by_tag_name("td")[-1].find_element_by_tag_name("a").get_attribute('href')
-        print("Monto ampliacion: {}".format(monto_ampliacion))
+   
         return  link_to_cc
 
     except Exception as e:
+        datos.update({'monto_ampliacion':''})
         #print("------------------")
         #print(e)
         #print("------------------")
@@ -154,8 +155,9 @@ def main(driver, year, path, datos):
 
     link_to_cc  = ampliaciones_tab(driver, datos)
 
-    print("Now is {}".format(datos['monto_ampliacion']))
-    if bool(link_to_cc) and not os.path.isfile("./Temps/"+nomenclatura+"/Ampliacion (CC).pdf"):
+
+    if bool(link_to_cc) and not os.path.isfile("{}//{}//Ampliacion (CC).pdf".format(path, nomenclatura)):
+
         driver.execute_script("window.open('');")
 
         driver.switch_to.window(driver.window_handles[2])
@@ -171,9 +173,10 @@ def main(driver, year, path, datos):
         move_to_download_folder(path, path + "\\" + nomenclatura + "\\",
                             "Ampliacion (CC)",
                             ".pdf")
+        sleep(0.5)
+        driver.close()
+        driver.switch_to.window(driver.window_handles[1])
         sleep(0.1)
-        driver.sclose()
-
 
 
         
@@ -212,7 +215,7 @@ def main(driver, year, path, datos):
         row_proveedor = find_proveedor(rows, datos)
         c = 1
         while row_proveedor is None:
-            print("Beware")
+            print("Beware, html element not found. Retrying...")
             print(c)
             print("--------")
             c+=1
@@ -255,13 +258,13 @@ def main(driver, year, path, datos):
         monto_fonacide = pdfPage.extractText().split("TOTAL:")[1]
         
         if pdfPage.extractText().split("TOTAL:")[0][-len(monto_fonacide):] != monto_fonacide:
-            print("Warning: Check Possible Error in:")
+            print("Warning: Check Possible Error in Monto Fonacide (PDF) didn't match:")
             print(datos['id_licitacion'])
             print(datos['nro_contrato'])
             print("--------------------")
             monto_fonacide = '-1'
         elif pdfPage.extractText().split("TOTAL:")[0][-len(monto_fonacide)-3] != '3':
-            monto_fonacide = '-1'
+            monto_fonacide = '0'
     except:
 
         error = True

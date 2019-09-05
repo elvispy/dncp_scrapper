@@ -21,6 +21,7 @@ import buscar_contrato
 import datos_contrato
 import descargar_docs
 import formatt
+import siguiente_pagina as sp
 
 solo_contratos = [] #Lista de contratos
 solo_licitacion = [] 
@@ -52,10 +53,11 @@ def loop_page(driver, nombres_licitacion, etapas_licit, year, path):
 
             #Formatting Monto Adjudicado and monto total
             try:
-                print("outside is {}".format(contrato_out['monto_ampliacion']))
-                contrato_out['monto_ampliacion'] = int(contrato_out['monto_ampliacion'][2:].replace(".", "").replace(",", ""))            
+                
+                contrato_out['monto_ampliacion'] = int(contrato_out['monto_ampliacion'][2:].replace(".", "").replace(",", ""))
+                
             except ValueError:
-                print(contrato_out['monto_ampliacion'])
+                
                 contrato_out['monto_ampliacion'] = 0
             solo_contratos.append(contrato_out)
 
@@ -68,9 +70,9 @@ def main(municipio = "Hernandarias", year = datetime.datetime.now().year):
     convocante = 'Municipalidad de '+ municipio
 
     ###### Change Download folder
-    path = os.getcwd()+"\\Temps\\" + year
-    if  not os.path.exists(os.getcwd() + "\\Temps\\" + year):
-        os.makedirs(os.getcwd() + "\\Temps\\" + year)
+    path = "{}\\Temps{}\\{}".format(os.getcwd(), municipio, year)
+    if  not os.path.exists(path):
+        os.makedirs(path)
 
     chrome_options = webdriver.ChromeOptions()
     prefs = {'download.default_directory' : path}
@@ -97,23 +99,22 @@ def main(municipio = "Hernandarias", year = datetime.datetime.now().year):
     xp_etapas_licit = '//*[@id="contratos"]/ul/li/article/div/div[1]/div[1]/div[2]/em'
     nombres_licitacion = driver.find_elements_by_xpath(xp_nombres_licit)
     etapas_licit = driver.find_elements_by_xpath(xp_etapas_licit)
-
-    
-        
-    ## Hacer esto cada vez que se vuelve a la lista de resultados
-    #i = 0 #para iterar sobre resultados en nombres
-     
     loop_page(driver, nombres_licitacion, etapas_licit, year, path)
-    try:
-        xp_next = '//*[@id="contratos"]/div[2]/div/div[2]/div/ul/li[3]/a'
-        driver.find_element_by_xpath(xp_next).click()
-        nombres_licitacion =  driver.find_elements_by_xpath(xp_nombres_licit)
-        etapas_licit =  driver.find_elements_by_xpath(xp_etapas_licit)
-    
 
-        loop_page(driver, nombres_licitacion, etapas_licit, year, path)
-    except Exception as e:
-        print(e)
+
+
+    #Is there a next page? If so, go for it
+    xp_pagination = '//*[@id="contratos"]/div[2]/div/div[2]/div/ul'
+    while sp.siguiente_pag(driver, xp_pagination):
+        try:
+            nombres_licitacion =  driver.find_elements_by_xpath(xp_nombres_licit)
+            etapas_licit =  driver.find_elements_by_xpath(xp_etapas_licit)
+
+            loop_page(driver, nombres_licitacion, etapas_licit, year, path)
+            
+        except Exception as e:
+            print(e)
+            print("En cristiano: Posiblemente no hay segunda pagina")
 
         
 
