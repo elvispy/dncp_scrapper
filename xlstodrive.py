@@ -201,12 +201,14 @@ def upload_to_cloud(drive, year_id):
         #Enter to the folder and update the files if they are not in drive
         os.chdir("./"+folder.replace("/", "-"))
 
-        #List year folder's elements
+        #List year folder's elements on Drive
         year_folder = drive.ListFile({'q':"'{}' in parents and trashed=false".format(match_id)}).GetList()
-
+        
         elements = [element['title'].lower() for element in year_folder]
 
-
+        #----------------------------------------------------------
+        #----------------------------------------------------------
+        #----------------------------------------------------------
         #Is codigo de contratacion in the folder?
         is_cc = False
         for  title in elements:
@@ -220,7 +222,11 @@ def upload_to_cloud(drive, year_id):
 
             file.SetContentFile("Codigo de Contratacion.pdf")
             file.Upload()
-
+            print("Uploaded Codigo de Contratacion")
+        #----------------------------------------------------------
+        #----------------------------------------------------------
+        #----------------------------------------------------------
+        
         #Is the contract in the folder?
         is_con = False
         for  title in elements:
@@ -233,12 +239,15 @@ def upload_to_cloud(drive, year_id):
             contract = os.listdir()
             contract = [pdf for pdf in contract if "contrato" in pdf.lower()][0]
 
-            file = drive.CreateFile({'title':contract[:-4],
+            file = drive.CreateFile({'title':contract.split(".")[0],
                                     'parents':[{'id':match_id}],
                                     'mimeType':'application/pdf'})
             file.SetContentFile(contract)
             file.Upload()
-
+            print("Uploaded {}".format(contract))
+        #----------------------------------------------------------
+        #----------------------------------------------------------
+        #----------------------------------------------------------
         #Does the contract have ampliacion?
         
         if os.path.isfile("./Ampliacion (CC).pdf"):
@@ -258,17 +267,54 @@ def upload_to_cloud(drive, year_id):
                 ampliacion_pdf = os.listdir()
                 ampliacion_pdf = [pdf for pdf in ampliacion_pdf if "ampliacion" in pdf.lower()][0]
     
-                file = drive.CreateFile({'title':ampliacion_pdf[:-4],
+                file = drive.CreateFile({'title':ampliacion_pdf.split(".")[0],
                                     'parents':[{'id':match_id}],
                                     'mimeType':'application/pdf'})
                 file.SetContentFile(ampliacion_pdf)
 
                 file.Upload()
-    
+                print("Uploaded {}".format(ampliacion_pdf))
+        #----------------------------------------------------------
+        #----------------------------------------------------------
+        #----------------------------------------------------------
+        #Does the Contract have Pliego de Bases y condiciones?
+
+        if any(["bases y condiciones" in title.lower() for title in os.listdir()]):
+
+            #Is the pbc in the remote folder?
+
+            is_pbc = False
+            
+            for title in elements:
+                if "Bases" in title or "bases" in title or "pbc" in title:
+                    is_pbc = True
+                    break
+
+            #If not, upload it
+
+            if not is_pbc:
+
+                pbc_file = os.listdir()
+                pbc_file = [file for file in pbc_file
+                            if ("bases" in file.lower() or "pbc" in file.lower())][0]
+
+                mimeType = pbc_file.split(".")[-1]
+
+                file = drive.CreateFile({'title':pbc_file.split(".")[0],
+                                         'parents':[{'id':match_id}],
+                                         'mimeType':'application/{}'.format(mimeType)})
+                file.SetContentFile(pbc_file)
+
+                file.Upload()
+                print("Uploaded {}".format(pbc_file))
+        
     
 
 
 def main(contratos = [], year = datetime.datetime.now().year, exceptions = [], municipio = "Hernandarias"):
+
+
+    #Exclude Exceptions
     copy_contratos = []
     for contrato in contratos:
         if not ("{} {}".format(contrato['id_licitacion'], contrato['nro_contrato']) in exceptions):
@@ -320,7 +366,11 @@ def main(contratos = [], year = datetime.datetime.now().year, exceptions = [], m
 
     #Upload to Drive
     file.SetContentFile(xlsxData['title'])
-    file.Upload()
+
+
+
+
+    #file.Upload()
 
 
     

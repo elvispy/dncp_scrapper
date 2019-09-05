@@ -41,6 +41,7 @@ def siguiente_pag(driver, xp_ul):
             #print('Click en siguiente página')
             existe_siguiente_pagina = True
     except:
+
         #existe_siguiente_pagina = False
         pass
     return existe_siguiente_pagina
