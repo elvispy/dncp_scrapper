@@ -15,7 +15,7 @@ python -m pip install selenium
 @echo ---------------------------------------------- 
 @echo ----------------------------------------------
 @echo Instalando PyPDF2
-ptyon -m píp install PyPDF2
+python -m pip install PyPDF2
 @echo ----------------------------------------------
 @echo ---------------------------------------------- 
 @echo Status : Operacion Terminada 

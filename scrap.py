@@ -52,8 +52,10 @@ def loop_page(driver, nombres_licitacion, etapas_licit, year, path):
 
             #Formatting Monto Adjudicado and monto total
             try:
+                print("outside is {}".format(contrato_out['monto_ampliacion']))
                 contrato_out['monto_ampliacion'] = int(contrato_out['monto_ampliacion'][2:].replace(".", "").replace(",", ""))            
             except ValueError:
+                print(contrato_out['monto_ampliacion'])
                 contrato_out['monto_ampliacion'] = 0
             solo_contratos.append(contrato_out)
 

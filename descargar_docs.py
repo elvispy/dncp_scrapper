@@ -10,7 +10,7 @@ import glob
 
 import PyPDF2
 
-monto_ampliacion = ""
+
 
 def find_proveedor(rows, datos):
     name = datos['proveedor'].lower().split(" ")
@@ -42,8 +42,9 @@ def move_to_download_folder(downloadPath, fileDestination,  newFileName, fileExt
             
 
         except Exception as e:
-            print(e)
-            print ("File has not finished downloading")
+            pass
+            #print(e)
+            #print ("File has not finished downloading")
             sleep(2)
 
     ## Create new file name
@@ -78,7 +79,8 @@ def documentos_tab(driver):
         print(e)
         return None
 
-def amplicaciones_tab(driver):
+def ampliaciones_tab(driver, datos):
+    
     wait = UI.WebDriverWait(driver, 5000)
     xp_ul_tabs = '/html/body/div[2]/ul'
     ul_tabs = driver.find_element_by_xpath(xp_ul_tabs)
@@ -99,19 +101,20 @@ def amplicaciones_tab(driver):
  
         row = [element for element in rows
            if ("monto" in element.find_element_by_tag_name("td").text.lower() )][0]
+   
         monto_ampliacion = row.find_elements_by_tag_name("td")[-3].text
-        print("Monto ampliacion: {}".format(monto_ampliacion))
+        datos.update({'monto_ampliacion':monto_ampliacion})
 
         link_to_cc = row.find_elements_by_tag_name("td")[-1].find_element_by_tag_name("a").get_attribute('href')
-        
-        return link_to_cc
+        print("Monto ampliacion: {}".format(monto_ampliacion))
+        return  link_to_cc
 
     except Exception as e:
         #print("------------------")
         #print(e)
         #print("------------------")
         
-        return 0
+        return  ""
 
         
 
@@ -149,8 +152,9 @@ def main(driver, year, path, datos):
 
     #See if there are ampliaciones
 
-    link_to_cc = amplicaciones_tab(driver)
-    datos.update({'monto_ampliacion':monto_ampliacion})
+    link_to_cc  = ampliaciones_tab(driver, datos)
+
+    print("Now is {}".format(datos['monto_ampliacion']))
     if bool(link_to_cc) and not os.path.isfile("./Temps/"+nomenclatura+"/Ampliacion (CC).pdf"):
         driver.execute_script("window.open('');")
 
@@ -168,7 +172,7 @@ def main(driver, year, path, datos):
                             "Ampliacion (CC)",
                             ".pdf")
         sleep(0.1)
-        driver.switch_to.window(driver.window_handles[1])
+        driver.sclose()
 
 
 

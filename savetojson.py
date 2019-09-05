@@ -12,7 +12,7 @@ def main(data):
         
         data.update(already_charged)
     except:
-        pass
+        print(e)
 
     with open("data.json", "w") as json_file:
         
