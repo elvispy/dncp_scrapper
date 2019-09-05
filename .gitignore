@@ -1,6 +1,5 @@
-#this is a comment in the gitignore file.
 
 mycreds.txt
-Temps/
+**/Temps
 credentials.json
-__pycache__/
+**/__pycache__
