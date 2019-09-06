@@ -5,6 +5,7 @@
         "convocante": "Municipalidad de Hernandarias",
         "fecha_firma": "22/03/2019",
         "id_licitacion": 355699,
+        "link_contrato": "",
         "monto_adjudicado": 567943068,
         "monto_ampliacion": 0,
         "monto_fonacide": 567943068,
@@ -14,7 +15,8 @@
         "nro_contrato": "04/2019",
         "periodo": 2019,
         "plurianual": "No",
-        "proveedor": "MEGGA IMP.EXP. SOCIEDAD ANONIMA"
+        "proveedor": "MEGGA IMP.EXP. SOCIEDAD ANONIMA",
+        "rescindido": "No"
     },
     "05/2019 355699": {
         "RUC": "4013685-0",
@@ -22,6 +24,7 @@
         "convocante": "Municipalidad de Hernandarias",
         "fecha_firma": "22/03/2019",
         "id_licitacion": 355699,
+        "link_contrato": "",
         "monto_adjudicado": 384557716,
         "monto_ampliacion": 0,
         "monto_fonacide": 384557716,
@@ -31,7 +34,8 @@
         "nro_contrato": "05/2019",
         "periodo": 2019,
         "plurianual": "No",
-        "proveedor": "DIEGO GUILLERMO FRANCO VARGAS"
+        "proveedor": "DIEGO GUILLERMO FRANCO VARGAS",
+        "rescindido": "No"
     },
     "06/2019 355699": {
         "RUC": "80058998-0",
@@ -39,6 +43,7 @@
         "convocante": "Municipalidad de Hernandarias",
         "fecha_firma": "22/03/2019",
         "id_licitacion": 355699,
+        "link_contrato": "",
         "monto_adjudicado": 177298174,
         "monto_ampliacion": 0,
         "monto_fonacide": 177298174,
@@ -48,7 +53,8 @@
         "nro_contrato": "06/2019",
         "periodo": 2019,
         "plurianual": "No",
-        "proveedor": "ECOSERVICE GROUP S.A"
+        "proveedor": "ECOSERVICE GROUP S.A",
+        "rescindido": "No"
     },
     "09/2015 290354": {
         "RUC": "696150-9",
@@ -56,6 +62,7 @@
         "convocante": "Municipalidad de Hernandarias",
         "fecha_firma": "05/05/2015",
         "id_licitacion": 290354,
+        "link_contrato": "https://drive.google.com/open?id=1o1roll6nPZ_6J3P5HoaNvbdxCrApFkLi",
         "monto_adjudicado": 744379020,
         "monto_ampliacion": 0,
         "monto_fonacide": 744379020,
@@ -65,7 +72,8 @@
         "nro_contrato": "09/2015",
         "periodo": 2015,
         "plurianual": "No",
-        "proveedor": "MARIA DE FATIMA SARTORIO VANNI"
+        "proveedor": "MARIA DE FATIMA SARTORIO VANNI",
+        "rescindido": "No"
     },
     "10/2015 290354": {
         "RUC": "2342574-1",
@@ -73,6 +81,7 @@
         "convocante": "Municipalidad de Hernandarias",
         "fecha_firma": "05/05/2015",
         "id_licitacion": 290354,
+        "link_contrato": "https://drive.google.com/open?id=1BgRR4A21jsCAD9xhSeZJ1VfQ9pJ9o336",
         "monto_adjudicado": 761342400,
         "monto_ampliacion": 0,
         "monto_fonacide": 761342400,
@@ -82,7 +91,8 @@
         "nro_contrato": "10/2015",
         "periodo": 2015,
         "plurianual": "No",
-        "proveedor": "ISABEL PETRONA GOMEZ CABRERA"
+        "proveedor": "ISABEL PETRONA GOMEZ CABRERA",
+        "rescindido": "No"
     },
     "11/2017 322496": {
         "RUC": "820668-6",
@@ -90,6 +100,7 @@
         "convocante": "Municipalidad de Hernandarias",
         "fecha_firma": "20/04/2017",
         "id_licitacion": 322496,
+        "link_contrato": "",
         "monto_adjudicado": 482590500,
         "monto_ampliacion": 0,
         "monto_fonacide": 482590500,
@@ -99,7 +110,8 @@
         "nro_contrato": "11/2017",
         "periodo": 2017,
         "plurianual": "No",
-        "proveedor": "ALCIDES SARTORIO VANNI"
+        "proveedor": "ALCIDES SARTORIO VANNI",
+        "rescindido": "No"
     },
     "16/2019 358012": {
         "RUC": "696150-9",
@@ -107,6 +119,7 @@
         "convocante": "Municipalidad de Hernandarias",
         "fecha_firma": "06/06/2019",
         "id_licitacion": 358012,
+        "link_contrato": "",
         "monto_adjudicado": 289755510,
         "monto_ampliacion": 0,
         "monto_fonacide": 289755510,
@@ -116,7 +129,8 @@
         "nro_contrato": "16/2019",
         "periodo": 2019,
         "plurianual": "No",
-        "proveedor": "MARIA DE FATIMA SARTORIO VANNI"
+        "proveedor": "MARIA DE FATIMA SARTORIO VANNI",
+        "rescindido": "No"
     },
     "17/2014 276562": {
         "RUC": "811116-2",
@@ -124,6 +138,7 @@
         "convocante": "Municipalidad de Hernandarias",
         "fecha_firma": "30/06/2014",
         "id_licitacion": 276562,
+        "link_contrato": "https://drive.google.com/open?id=11g5BrMbFUXgFGEJmeGFb3y4IpRPlyIQP",
         "monto_adjudicado": 523937473,
         "monto_ampliacion": 0,
         "monto_fonacide": 523937473,
@@ -133,7 +148,8 @@
         "nro_contrato": "17/2014",
         "periodo": 2014,
         "plurianual": "No",
-        "proveedor": "CAYO MARCIAL TABOADA MONTANIA"
+        "proveedor": "CAYO MARCIAL TABOADA MONTANIA",
+        "rescindido": "No"
     },
     "17/2019 358012": {
         "RUC": "1793103-7",
@@ -141,6 +157,7 @@
         "convocante": "Municipalidad de Hernandarias",
         "fecha_firma": "06/06/2019",
         "id_licitacion": 358012,
+        "link_contrato": "",
         "monto_adjudicado": 384337500,
         "monto_ampliacion": 0,
         "monto_fonacide": 384337500,
@@ -150,7 +167,8 @@
         "nro_contrato": "17/2019",
         "periodo": 2019,
         "plurianual": "No",
-        "proveedor": "Teofilo Amarilla Silvero"
+        "proveedor": "Teofilo Amarilla Silvero",
+        "rescindido": "No"
     },
     "18/2014 278344": {
         "RUC": "80052380-6",
@@ -158,6 +176,7 @@
         "convocante": "Municipalidad de Hernandarias",
         "fecha_firma": "30/06/2014",
         "id_licitacion": 278344,
+        "link_contrato": "https://drive.google.com/open?id=1LxfSpVKjEWJuDlznOu9ReIrlbpQ12w9V",
         "monto_adjudicado": 202474590,
         "monto_ampliacion": 0,
         "monto_fonacide": 202474590,
@@ -167,7 +186,8 @@
         "nro_contrato": "18/2014",
         "periodo": 2014,
         "plurianual": "No",
-        "proveedor": "MD S.R.L."
+        "proveedor": "MD S.R.L.",
+        "rescindido": "No"
     },
     "18/2019 358012": {
         "RUC": "2342574-1",
@@ -175,6 +195,7 @@
         "convocante": "Municipalidad de Hernandarias",
         "fecha_firma": "06/06/2019",
         "id_licitacion": 358012,
+        "link_contrato": "",
         "monto_adjudicado": 965540160,
         "monto_ampliacion": 0,
         "monto_fonacide": 965540160,
@@ -184,7 +205,8 @@
         "nro_contrato": "18/2019",
         "periodo": 2019,
         "plurianual": "No",
-        "proveedor": "ISABEL PETRONA GOMEZ CABRERA"
+        "proveedor": "ISABEL PETRONA GOMEZ CABRERA",
+        "rescindido": "No"
     },
     "19/2014 276566": {
         "RUC": "859999-8",
@@ -192,6 +214,7 @@
         "convocante": "Municipalidad de Hernandarias",
         "fecha_firma": "01/07/2014",
         "id_licitacion": 276566,
+        "link_contrato": "https://drive.google.com/open?id=1DfuDD5XeJdJmHpLAs2mD8ip4ehwL1txc",
         "monto_adjudicado": 250284280,
         "monto_ampliacion": 0,
         "monto_fonacide": 250284280,
@@ -201,7 +224,8 @@
         "nro_contrato": "19/2014",
         "periodo": 2014,
         "plurianual": "No",
-        "proveedor": "Ruben Casco Escobar"
+        "proveedor": "Ruben Casco Escobar",
+        "rescindido": "No"
     },
     "20/2014 276569": {
         "RUC": "3594985-6",
@@ -209,6 +233,7 @@
         "convocante": "Municipalidad de Hernandarias",
         "fecha_firma": "04/07/2014",
         "id_licitacion": 276569,
+        "link_contrato": "https://drive.google.com/open?id=1SCjJ1nuXl_ni1DUNew-qEUKPIj4O8NZE",
         "monto_adjudicado": 258465000,
         "monto_ampliacion": 0,
         "monto_fonacide": 258465000,
@@ -218,7 +243,8 @@
         "nro_contrato": "20/2014",
         "periodo": 2014,
         "plurianual": "No",
-        "proveedor": "Juan Carlos Torres Duarte"
+        "proveedor": "Juan Carlos Torres Duarte",
+        "rescindido": "No"
     },
     "21/2014 276567": {
         "RUC": "80054076-0",
@@ -226,6 +252,7 @@
         "convocante": "Municipalidad de Hernandarias",
         "fecha_firma": "08/07/2014",
         "id_licitacion": 276567,
+        "link_contrato": "https://drive.google.com/open?id=1RPbh-66YpYwNkowsmOfwi9pldisTXc6z",
         "monto_adjudicado": 244462522,
         "monto_ampliacion": 0,
         "monto_fonacide": 244462522,
@@ -235,7 +262,8 @@
         "nro_contrato": "21/2014",
         "periodo": 2014,
         "plurianual": "No",
-        "proveedor": "Perez & Aguayo S.R.L."
+        "proveedor": "Perez & Aguayo S.R.L.",
+        "rescindido": "No"
     },
     "22/2014 276565": {
         "RUC": "80054076-0",
@@ -243,6 +271,7 @@
         "convocante": "Municipalidad de Hernandarias",
         "fecha_firma": "08/07/2014",
         "id_licitacion": 276565,
+        "link_contrato": "https://drive.google.com/open?id=1ZqrzDMZYWfUomMmTk1VsVQFaPArHLVA_",
         "monto_adjudicado": 183351382,
         "monto_ampliacion": 0,
         "monto_fonacide": 183351382,
@@ -252,7 +281,8 @@
         "nro_contrato": "22/2014",
         "periodo": 2014,
         "plurianual": "No",
-        "proveedor": "Perez & Aguayo S.R.L."
+        "proveedor": "Perez & Aguayo S.R.L.",
+        "rescindido": "No"
     },
     "23/2014 276568": {
         "RUC": "80052380-6",
@@ -260,6 +290,7 @@
         "convocante": "Municipalidad de Hernandarias",
         "fecha_firma": "08/07/2014",
         "id_licitacion": 276568,
+        "link_contrato": "https://drive.google.com/open?id=1gG0kvFXOCwMYU7O3ERQ-qIDEBkrokNTN",
         "monto_adjudicado": 177126323,
         "monto_ampliacion": 0,
         "monto_fonacide": 177126323,
@@ -269,7 +300,27 @@
         "nro_contrato": "23/2014",
         "periodo": 2014,
         "plurianual": "No",
-        "proveedor": "MD S.R.L."
+        "proveedor": "MD S.R.L.",
+        "rescindido": "No"
+    },
+    "23/2016 314236": {
+        "RUC": "2342574-1",
+        "categoria": "Alimentacion Escolar",
+        "convocante": "Municipalidad de Hernandarias",
+        "fecha_firma": "15/09/2016",
+        "id_licitacion": 314236,
+        "link_contrato": "",
+        "monto_adjudicado": 733967850,
+        "monto_ampliacion": 0,
+        "monto_fonacide": 733967850,
+        "monto_total": 733967850,
+        "nombre_empresa": "PANADERIA Y CONFITERIA MAN\u00c1",
+        "nombre_licitacion": "PROVISION DE ALMUERZO ESCOLAR EN LA MODALIDAD DE CATERING",
+        "nro_contrato": "23/2016",
+        "periodo": 2016,
+        "plurianual": "No",
+        "proveedor": "ISABEL PETRONA GOMEZ CABRERA",
+        "rescindido": "No"
     },
     "24/2014 276570": {
         "RUC": "80052380-6",
@@ -277,6 +328,7 @@
         "convocante": "Municipalidad de Hernandarias",
         "fecha_firma": "08/07/2014",
         "id_licitacion": 276570,
+        "link_contrato": "https://drive.google.com/open?id=1z9PKduhzacS73noT1jWpSLVg04zME7jF",
         "monto_adjudicado": 177126323,
         "monto_ampliacion": 0,
         "monto_fonacide": 177126323,
@@ -286,7 +338,8 @@
         "nro_contrato": "24/2014",
         "periodo": 2014,
         "plurianual": "No",
-        "proveedor": "MD S.R.L."
+        "proveedor": "MD S.R.L.",
+        "rescindido": "No"
     },
     "24/2017 332771": {
         "RUC": "1017086-3",
@@ -294,6 +347,7 @@
         "convocante": "Municipalidad de Hernandarias",
         "fecha_firma": "23/08/2017",
         "id_licitacion": 332771,
+        "link_contrato": "",
         "monto_adjudicado": 212710500,
         "monto_ampliacion": 0,
         "monto_fonacide": 212710500,
@@ -303,7 +357,8 @@
         "nro_contrato": "24/2017",
         "periodo": 2017,
         "plurianual": "No",
-        "proveedor": "MIGUEL ANGEL CABRERA"
+        "proveedor": "MIGUEL ANGEL CABRERA",
+        "rescindido": "No"
     },
     "25/2017 332771": {
         "RUC": "2952436-9",
@@ -311,6 +366,7 @@
         "convocante": "Municipalidad de Hernandarias",
         "fecha_firma": "23/08/2017",
         "id_licitacion": 332771,
+        "link_contrato": "",
         "monto_adjudicado": 723723163,
         "monto_ampliacion": 0,
         "monto_fonacide": 723723163,
@@ -320,7 +376,8 @@
         "nro_contrato": "25/2017",
         "periodo": 2017,
         "plurianual": "No",
-        "proveedor": "RICARDO MEDINA OVELAR"
+        "proveedor": "RICARDO MEDINA OVELAR",
+        "rescindido": "No"
     },
     "27/2015 297576": {
         "RUC": "80086344-5",
@@ -328,6 +385,7 @@
         "convocante": "Municipalidad de Hernandarias",
         "fecha_firma": "28/08/2015",
         "id_licitacion": 297576,
+        "link_contrato": "https://drive.google.com/open?id=1D36gFCVqGs3H1IhqCf-5Q0pX50HSrwTV",
         "monto_adjudicado": 239500000,
         "monto_ampliacion": 0,
         "monto_fonacide": 239500000,
@@ -337,7 +395,8 @@
         "nro_contrato": "27/2015",
         "periodo": 2015,
         "plurianual": "No",
-        "proveedor": "CONSTRUCCIONES SOCIEDAD AN\u00d3NIMA"
+        "proveedor": "CONSTRUCCIONES SOCIEDAD AN\u00d3NIMA",
+        "rescindido": "No"
     },
     "28/2015 297575": {
         "RUC": "3594985-6",
@@ -345,6 +404,7 @@
         "convocante": "Municipalidad de Hernandarias",
         "fecha_firma": "28/08/2015",
         "id_licitacion": 297575,
+        "link_contrato": "https://drive.google.com/open?id=1YtY8Z-As2BGH_tliqymKA1a31cLG-caQ",
         "monto_adjudicado": 350000000,
         "monto_ampliacion": 0,
         "monto_fonacide": 350000000,
@@ -354,7 +414,8 @@
         "nro_contrato": "28/2015",
         "periodo": 2015,
         "plurianual": "No",
-        "proveedor": "Juan Carlos Torres Duarte"
+        "proveedor": "Juan Carlos Torres Duarte",
+        "rescindido": "No"
     },
     "28/2018 351680": {
         "RUC": "1891439-0",
@@ -362,6 +423,7 @@
         "convocante": "Municipalidad de Hernandarias",
         "fecha_firma": "16/10/2018",
         "id_licitacion": 351680,
+        "link_contrato": "https://drive.google.com/open?id=1FokFY6gW6RldrkCEDSW9rHbM9Gf2u9yi",
         "monto_adjudicado": 572367802,
         "monto_ampliacion": 0,
         "monto_fonacide": 572367802,
@@ -371,7 +433,8 @@
         "nro_contrato": "28/2018",
         "periodo": 2018,
         "plurianual": "No",
-        "proveedor": "JUAN VICENTE MARTINEZ ACU\u00d1A"
+        "proveedor": "JUAN VICENTE MARTINEZ ACU\u00d1A",
+        "rescindido": "No"
     },
     "29/2015 298650": {
         "RUC": "80069521-6",
@@ -379,6 +442,7 @@
         "convocante": "Municipalidad de Hernandarias",
         "fecha_firma": "15/09/2015",
         "id_licitacion": 298650,
+        "link_contrato": "https://drive.google.com/open?id=1hGb0jZZ53Q2WUoiAvUtKAHiTg_464jes",
         "monto_adjudicado": 475229324,
         "monto_ampliacion": 0,
         "monto_fonacide": 475229324,
@@ -388,7 +452,8 @@
         "nro_contrato": "29/2015",
         "periodo": 2015,
         "plurianual": "No",
-        "proveedor": "G.M. INGENIERIA S.A."
+        "proveedor": "G.M. INGENIERIA S.A.",
+        "rescindido": "No"
     },
     "29/2016 318222": {
         "RUC": "2364427-3",
@@ -396,6 +461,7 @@
         "convocante": "Municipalidad de Hernandarias",
         "fecha_firma": "15/11/2016",
         "id_licitacion": 318222,
+        "link_contrato": "",
         "monto_adjudicado": 80372000,
         "monto_ampliacion": 0,
         "monto_fonacide": 80372000,
@@ -405,7 +471,8 @@
         "nro_contrato": "29/2016",
         "periodo": 2016,
         "plurianual": "No",
-        "proveedor": "MILCIADES VERA ESPINOZA"
+        "proveedor": "MILCIADES VERA ESPINOZA",
+        "rescindido": "No"
     },
     "29/2018 351680": {
         "RUC": "3512939-5",
@@ -413,6 +480,7 @@
         "convocante": "Municipalidad de Hernandarias",
         "fecha_firma": "16/10/2018",
         "id_licitacion": 351680,
+        "link_contrato": "https://drive.google.com/open?id=1_wP94k_1PkcajyBuFppjKLIY9PlsyjF8",
         "monto_adjudicado": 166383843,
         "monto_ampliacion": 0,
         "monto_fonacide": 166383843,
@@ -422,7 +490,8 @@
         "nro_contrato": "29/2018",
         "periodo": 2018,
         "plurianual": "No",
-        "proveedor": "Alicia Edith Medina Rodas"
+        "proveedor": "Alicia Edith Medina Rodas",
+        "rescindido": "No"
     },
     "30/2015 298567": {
         "RUC": "945999-5",
@@ -430,6 +499,7 @@
         "convocante": "Municipalidad de Hernandarias",
         "fecha_firma": "17/09/2015",
         "id_licitacion": 298567,
+        "link_contrato": "https://drive.google.com/open?id=1LvM8DUD85jLdBe1eTLS8jaKPMOr9oj-e",
         "monto_adjudicado": 246107875,
         "monto_ampliacion": 0,
         "monto_fonacide": 246107875,
@@ -439,7 +509,8 @@
         "nro_contrato": "30/2015",
         "periodo": 2015,
         "plurianual": "No",
-        "proveedor": "ANA MARIA ALFONSO RIVEROS"
+        "proveedor": "ANA MARIA ALFONSO RIVEROS",
+        "rescindido": "No"
     },
     "30/2016 318233": {
         "RUC": "1056732-1",
@@ -447,6 +518,7 @@
         "convocante": "Municipalidad de Hernandarias",
         "fecha_firma": "15/11/2016",
         "id_licitacion": 318233,
+        "link_contrato": "",
         "monto_adjudicado": 80947500,
         "monto_ampliacion": 0,
         "monto_fonacide": 80947500,
@@ -456,7 +528,8 @@
         "nro_contrato": "30/2016",
         "periodo": 2016,
         "plurianual": "No",
-        "proveedor": "CECILIO BENITEZ NARVAEZ"
+        "proveedor": "CECILIO BENITEZ NARVAEZ",
+        "rescindido": "No"
     },
     "30/2017 332720": {
         "RUC": "2364427-3",
@@ -464,6 +537,7 @@
         "convocante": "Municipalidad de Hernandarias",
         "fecha_firma": "05/10/2017",
         "id_licitacion": 332720,
+        "link_contrato": "",
         "monto_adjudicado": 160775600,
         "monto_ampliacion": 0,
         "monto_fonacide": 160775600,
@@ -473,7 +547,8 @@
         "nro_contrato": "30/2017",
         "periodo": 2017,
         "plurianual": "No",
-        "proveedor": "MILCIADES VERA ESPINOZA"
+        "proveedor": "MILCIADES VERA ESPINOZA",
+        "rescindido": "No"
     },
     "30/2018 351680": {
         "RUC": "945999-5",
@@ -481,6 +556,7 @@
         "convocante": "Municipalidad de Hernandarias",
         "fecha_firma": "16/10/2018",
         "id_licitacion": 351680,
+        "link_contrato": "https://drive.google.com/open?id=1J8G8B5KMbe26yECwlaqfvieXRKUc0ucT",
         "monto_adjudicado": 481394994,
         "monto_ampliacion": 0,
         "monto_fonacide": 481394994,
@@ -490,7 +566,8 @@
         "nro_contrato": "30/2018",
         "periodo": 2018,
         "plurianual": "No",
-        "proveedor": "ANA MARIA ALFONSO RIVEROS"
+        "proveedor": "ANA MARIA ALFONSO RIVEROS",
+        "rescindido": "No"
     },
     "31/2015 298571": {
         "RUC": "3594985-6",
@@ -498,6 +575,7 @@
         "convocante": "Municipalidad de Hernandarias",
         "fecha_firma": "17/09/2015",
         "id_licitacion": 298571,
+        "link_contrato": "https://drive.google.com/open?id=1xOIlb97BS6eAUgqkBuprFibX2RbUqGx2",
         "monto_adjudicado": 385000000,
         "monto_ampliacion": 0,
         "monto_fonacide": 385000000,
@@ -507,7 +585,8 @@
         "nro_contrato": "31/2015",
         "periodo": 2015,
         "plurianual": "No",
-        "proveedor": "Juan Carlos Torres Duarte"
+        "proveedor": "Juan Carlos Torres Duarte",
+        "rescindido": "No"
     },
     "31/2016 318215": {
         "RUC": "4543313-5",
@@ -515,6 +594,7 @@
         "convocante": "Municipalidad de Hernandarias",
         "fecha_firma": "15/11/2016",
         "id_licitacion": 318215,
+        "link_contrato": "",
         "monto_adjudicado": 137910400,
         "monto_ampliacion": 0,
         "monto_fonacide": 137910400,
@@ -524,7 +604,8 @@
         "nro_contrato": "31/2016",
         "periodo": 2016,
         "plurianual": "No",
-        "proveedor": "ROLANDO FLORENTINO CASCO GARCETE"
+        "proveedor": "ROLANDO FLORENTINO CASCO GARCETE",
+        "rescindido": "No"
     },
     "31/2018 351535": {
         "RUC": "3512939-5",
@@ -532,6 +613,7 @@
         "convocante": "Municipalidad de Hernandarias",
         "fecha_firma": "19/11/2018",
         "id_licitacion": 351535,
+        "link_contrato": "https://drive.google.com/open?id=1_kydrrAihiEcBaOOdUqd0q8H_jonx88H",
         "monto_adjudicado": 424829768,
         "monto_ampliacion": 0,
         "monto_fonacide": 424829768,
@@ -541,7 +623,8 @@
         "nro_contrato": "31/2018",
         "periodo": 2018,
         "plurianual": "Si",
-        "proveedor": "Alicia Edith Medina Rodas"
+        "proveedor": "Alicia Edith Medina Rodas",
+        "rescindido": "No"
     },
     "32/2015 298640": {
         "RUC": "3594985-6",
@@ -549,6 +632,7 @@
         "convocante": "Municipalidad de Hernandarias",
         "fecha_firma": "17/09/2015",
         "id_licitacion": 298640,
+        "link_contrato": "https://drive.google.com/open?id=1ynzc81vl_KvkBPSZE8IWYif5f2AzyMNg",
         "monto_adjudicado": 285000000,
         "monto_ampliacion": 0,
         "monto_fonacide": 285000000,
@@ -558,7 +642,8 @@
         "nro_contrato": "32/2015",
         "periodo": 2015,
         "plurianual": "No",
-        "proveedor": "Juan Carlos Torres Duarte"
+        "proveedor": "Juan Carlos Torres Duarte",
+        "rescindido": "No"
     },
     "32/2016 318217": {
         "RUC": "80010414-5",
@@ -566,6 +651,7 @@
         "convocante": "Municipalidad de Hernandarias",
         "fecha_firma": "15/11/2016",
         "id_licitacion": 318217,
+        "link_contrato": "",
         "monto_adjudicado": 137631600,
         "monto_ampliacion": 0,
         "monto_fonacide": 137631600,
@@ -575,7 +661,8 @@
         "nro_contrato": "32/2016",
         "periodo": 2016,
         "plurianual": "No",
-        "proveedor": "SEGE S.R.L."
+        "proveedor": "SEGE S.R.L.",
+        "rescindido": "No"
     },
     "32/2017 332720": {
         "RUC": "80053392-5",
@@ -583,6 +670,7 @@
         "convocante": "Municipalidad de Hernandarias",
         "fecha_firma": "06/10/2017",
         "id_licitacion": 332720,
+        "link_contrato": "",
         "monto_adjudicado": 172000000,
         "monto_ampliacion": 0,
         "monto_fonacide": 172000000,
@@ -592,7 +680,8 @@
         "nro_contrato": "32/2017",
         "periodo": 2017,
         "plurianual": "No",
-        "proveedor": "MEGGA IMP.EXP. SOCIEDAD ANONIMA"
+        "proveedor": "MEGGA IMP.EXP. SOCIEDAD ANONIMA",
+        "rescindido": "No"
     },
     "32/2018 351532": {
         "RUC": "80053392-5",
@@ -600,6 +689,7 @@
         "convocante": "Municipalidad de Hernandarias",
         "fecha_firma": "19/11/2018",
         "id_licitacion": 351532,
+        "link_contrato": "https://drive.google.com/open?id=1wouep2Z7pk93cKX85rgokCIa5NA4LY8S",
         "monto_adjudicado": 300454165,
         "monto_ampliacion": 0,
         "monto_fonacide": 300454165,
@@ -609,7 +699,8 @@
         "nro_contrato": "32/2018",
         "periodo": 2018,
         "plurianual": "Si",
-        "proveedor": "MEGGA IMP.EXP. SOCIEDAD ANONIMA"
+        "proveedor": "MEGGA IMP.EXP. SOCIEDAD ANONIMA",
+        "rescindido": "No"
     },
     "33/2014 278900": {
         "RUC": "696150-9",
@@ -617,6 +708,7 @@
         "convocante": "Municipalidad de Hernandarias",
         "fecha_firma": "02/09/2014",
         "id_licitacion": 278900,
+        "link_contrato": "https://drive.google.com/open?id=1VLDdUbmKRX0_jSfH0IR2cNIICfxRUn46",
         "monto_adjudicado": 1459770000,
         "monto_ampliacion": 0,
         "monto_fonacide": 1459770000,
@@ -626,7 +718,8 @@
         "nro_contrato": "33/2014",
         "periodo": 2014,
         "plurianual": "No",
-        "proveedor": "MARIA DE FATIMA SARTORIO VANNI"
+        "proveedor": "MARIA DE FATIMA SARTORIO VANNI",
+        "rescindido": "No"
     },
     "33/2015 298651": {
         "RUC": "80069521-6",
@@ -634,6 +727,7 @@
         "convocante": "Municipalidad de Hernandarias",
         "fecha_firma": "17/09/2015",
         "id_licitacion": 298651,
+        "link_contrato": "https://drive.google.com/open?id=1ZQUK6d3W7ECADJ0FI32zromubTAsAwPz",
         "monto_adjudicado": 330895948,
         "monto_ampliacion": 0,
         "monto_fonacide": 330895948,
@@ -643,7 +737,8 @@
         "nro_contrato": "33/2015",
         "periodo": 2015,
         "plurianual": "No",
-        "proveedor": "G.M. INGENIERIA S.A."
+        "proveedor": "G.M. INGENIERIA S.A.",
+        "rescindido": "No"
     },
     "33/2016 318218": {
         "RUC": "2055978-0",
@@ -651,6 +746,7 @@
         "convocante": "Municipalidad de Hernandarias",
         "fecha_firma": "15/11/2016",
         "id_licitacion": 318218,
+        "link_contrato": "",
         "monto_adjudicado": 137655000,
         "monto_ampliacion": 0,
         "monto_fonacide": 137655000,
@@ -660,7 +756,8 @@
         "nro_contrato": "33/2016",
         "periodo": 2016,
         "plurianual": "No",
-        "proveedor": "OSCAR ANIBAL MELGAREJO VEGA"
+        "proveedor": "OSCAR ANIBAL MELGAREJO VEGA",
+        "rescindido": "No"
     },
     "33/2018 351532": {
         "RUC": "2503445-6",
@@ -668,6 +765,7 @@
         "convocante": "Municipalidad de Hernandarias",
         "fecha_firma": "19/11/2018",
         "id_licitacion": 351532,
+        "link_contrato": "https://drive.google.com/open?id=17ZiEDiMgwbyeol02rXZgUPmJYV9CbwzA",
         "monto_adjudicado": 182683290,
         "monto_ampliacion": 0,
         "monto_fonacide": 182683290,
@@ -677,7 +775,8 @@
         "nro_contrato": "33/2018",
         "periodo": 2018,
         "plurianual": "Si",
-        "proveedor": "ANIBAL LOPEZ DIAS"
+        "proveedor": "ANIBAL LOPEZ DIAS",
+        "rescindido": "No"
     },
     "34/2015 298638": {
         "RUC": "945999-5",
@@ -685,6 +784,7 @@
         "convocante": "Municipalidad de Hernandarias",
         "fecha_firma": "17/09/2015",
         "id_licitacion": 298638,
+        "link_contrato": "https://drive.google.com/open?id=1ku41ZIqHCRnrvlJjo3cQ4Zg1m3QAVlME",
         "monto_adjudicado": 257102378,
         "monto_ampliacion": 0,
         "monto_fonacide": 257102378,
@@ -694,7 +794,8 @@
         "nro_contrato": "34/2015",
         "periodo": 2015,
         "plurianual": "No",
-        "proveedor": "ANA MARIA ALFONSO RIVEROS"
+        "proveedor": "ANA MARIA ALFONSO RIVEROS",
+        "rescindido": "No"
     },
     "34/2016 318075": {
         "RUC": "1056732-1",
@@ -702,6 +803,7 @@
         "convocante": "Municipalidad de Hernandarias",
         "fecha_firma": "15/11/2016",
         "id_licitacion": 318075,
+        "link_contrato": "",
         "monto_adjudicado": 113007000,
         "monto_ampliacion": 0,
         "monto_fonacide": 113007000,
@@ -711,7 +813,8 @@
         "nro_contrato": "34/2016",
         "periodo": 2016,
         "plurianual": "No",
-        "proveedor": "CECILIO BENITEZ NARVAEZ"
+        "proveedor": "CECILIO BENITEZ NARVAEZ",
+        "rescindido": "No"
     },
     "34/2018 351533": {
         "RUC": "2952436-9",
@@ -719,6 +822,7 @@
         "convocante": "Municipalidad de Hernandarias",
         "fecha_firma": "12/12/2018",
         "id_licitacion": 351533,
+        "link_contrato": "https://drive.google.com/open?id=1Z9uGcP5KHjtlAcjIYLk0GVidIAy0ubXA",
         "monto_adjudicado": 251326650,
         "monto_ampliacion": 0,
         "monto_fonacide": 251326650,
@@ -728,7 +832,8 @@
         "nro_contrato": "34/2018",
         "periodo": 2018,
         "plurianual": "Si",
-        "proveedor": "RICARDO MEDINA OVELAR"
+        "proveedor": "RICARDO MEDINA OVELAR",
+        "rescindido": "No"
     },
     "35/2015 298637": {
         "RUC": "1800821-6",
@@ -736,6 +841,7 @@
         "convocante": "Municipalidad de Hernandarias",
         "fecha_firma": "17/09/2015",
         "id_licitacion": 298637,
+        "link_contrato": "https://drive.google.com/open?id=1LkJhHLHjLyzEaxRms_6eDkUhEh0KyDCj",
         "monto_adjudicado": 299936583,
         "monto_ampliacion": 0,
         "monto_fonacide": 299936583,
@@ -745,7 +851,8 @@
         "nro_contrato": "35/2015",
         "periodo": 2015,
         "plurianual": "No",
-        "proveedor": "ANA MARIA MOREL ALFONSO"
+        "proveedor": "ANA MARIA MOREL ALFONSO",
+        "rescindido": "No"
     },
     "35/2016 318223": {
         "RUC": "1017086-3",
@@ -753,6 +860,7 @@
         "convocante": "Municipalidad de Hernandarias",
         "fecha_firma": "15/11/2016",
         "id_licitacion": 318223,
+        "link_contrato": "",
         "monto_adjudicado": 104766200,
         "monto_ampliacion": 0,
         "monto_fonacide": 104766200,
@@ -762,7 +870,8 @@
         "nro_contrato": "35/2016",
         "periodo": 2016,
         "plurianual": "No",
-        "proveedor": "MIGUEL ANGEL CABRERA"
+        "proveedor": "MIGUEL ANGEL CABRERA",
+        "rescindido": "No"
     },
     "35/2018 351533": {
         "RUC": "3526459-4",
@@ -770,6 +879,7 @@
         "convocante": "Municipalidad de Hernandarias",
         "fecha_firma": "12/12/2018",
         "id_licitacion": 351533,
+        "link_contrato": "https://drive.google.com/open?id=1WFNgwx1BPWkQbA7EOTiU4pC2T0d81RAt",
         "monto_adjudicado": 177516566,
         "monto_ampliacion": 0,
         "monto_fonacide": 177516566,
@@ -779,7 +889,8 @@
         "nro_contrato": "35/2018",
         "periodo": 2018,
         "plurianual": "Si",
-        "proveedor": "CARINA NU\u00d1EZ GODOY"
+        "proveedor": "CARINA NU\u00d1EZ GODOY",
+        "rescindido": "No"
     },
     "36/2015 298652": {
         "RUC": "80077342-0",
@@ -787,6 +898,7 @@
         "convocante": "Municipalidad de Hernandarias",
         "fecha_firma": "17/09/2015",
         "id_licitacion": 298652,
+        "link_contrato": "https://drive.google.com/open?id=1yWC5PRA76rOmFNvw4vn0wnVgWPdLHPhp",
         "monto_adjudicado": 182643810,
         "monto_ampliacion": 0,
         "monto_fonacide": 182643810,
@@ -796,7 +908,8 @@
         "nro_contrato": "36/2015",
         "periodo": 2015,
         "plurianual": "No",
-        "proveedor": "J. L. Y COMPA\u00d1IA SOCIEDAD ANONIMA"
+        "proveedor": "J. L. Y COMPA\u00d1IA SOCIEDAD ANONIMA",
+        "rescindido": "No"
     },
     "36/2016 318220": {
         "RUC": "2936648-8",
@@ -804,6 +917,7 @@
         "convocante": "Municipalidad de Hernandarias",
         "fecha_firma": "15/11/2016",
         "id_licitacion": 318220,
+        "link_contrato": "",
         "monto_adjudicado": 66200000,
         "monto_ampliacion": 0,
         "monto_fonacide": 66200000,
@@ -813,7 +927,8 @@
         "nro_contrato": "36/2016",
         "periodo": 2016,
         "plurianual": "No",
-        "proveedor": "EDILBERTO LOPEZ BENITEZ"
+        "proveedor": "EDILBERTO LOPEZ BENITEZ",
+        "rescindido": "No"
     },
     "37/2015 298653": {
         "RUC": "80069521-6",
@@ -821,6 +936,7 @@
         "convocante": "Municipalidad de Hernandarias",
         "fecha_firma": "17/09/2015",
         "id_licitacion": 298653,
+        "link_contrato": "https://drive.google.com/open?id=1DE7SQduCQpLZhEP0-YAeCI88-0crFh85",
         "monto_adjudicado": 339856508,
         "monto_ampliacion": 0,
         "monto_fonacide": 339856508,
@@ -830,7 +946,8 @@
         "nro_contrato": "37/2015",
         "periodo": 2015,
         "plurianual": "No",
-        "proveedor": "G.M. INGENIERIA S.A."
+        "proveedor": "G.M. INGENIERIA S.A.",
+        "rescindido": "No"
     },
     "37/2016 318225": {
         "RUC": "80090781-7",
@@ -838,6 +955,7 @@
         "convocante": "Municipalidad de Hernandarias",
         "fecha_firma": "15/11/2016",
         "id_licitacion": 318225,
+        "link_contrato": "",
         "monto_adjudicado": 139821058,
         "monto_ampliacion": 0,
         "monto_fonacide": 139821058,
@@ -847,7 +965,8 @@
         "nro_contrato": "37/2016",
         "periodo": 2016,
         "plurianual": "No",
-        "proveedor": "YGUAZU INGENIERIA Y CONSTRUCTORA S.A"
+        "proveedor": "YGUAZU INGENIERIA Y CONSTRUCTORA S.A",
+        "rescindido": "No"
     },
     "37/2017 335605": {
         "RUC": "3526459-4",
@@ -855,6 +974,7 @@
         "convocante": "Municipalidad de Hernandarias",
         "fecha_firma": "16/11/2017",
         "id_licitacion": 335605,
+        "link_contrato": "",
         "monto_adjudicado": 228000000,
         "monto_ampliacion": 0,
         "monto_fonacide": 228000000,
@@ -864,7 +984,8 @@
         "nro_contrato": "37/2017",
         "periodo": 2017,
         "plurianual": "No",
-        "proveedor": "CARINA NU\u00d1EZ GODOY"
+        "proveedor": "CARINA NU\u00d1EZ GODOY",
+        "rescindido": "No"
     },
     "38/2014 281564": {
         "RUC": "607606-8",
@@ -872,6 +993,7 @@
         "convocante": "Municipalidad de Hernandarias",
         "fecha_firma": "14/11/2014",
         "id_licitacion": 281564,
+        "link_contrato": "https://drive.google.com/open?id=11pGmdzdi3Ve3iE68rU7AuYZbO3ASVN_M",
         "monto_adjudicado": 394409560,
         "monto_ampliacion": 0,
         "monto_fonacide": 238038120,
@@ -881,7 +1003,8 @@
         "nro_contrato": "38/2014",
         "periodo": 2014,
         "plurianual": "Si",
-        "proveedor": "PABLO ISAAC ARMOA CABRERA"
+        "proveedor": "PABLO ISAAC ARMOA CABRERA",
+        "rescindido": "No"
     },
     "38/2016 318228": {
         "RUC": "4356255-8",
@@ -889,6 +1012,7 @@
         "convocante": "Municipalidad de Hernandarias",
         "fecha_firma": "15/11/2016",
         "id_licitacion": 318228,
+        "link_contrato": "",
         "monto_adjudicado": 65000000,
         "monto_ampliacion": 0,
         "monto_fonacide": 65000000,
@@ -898,7 +1022,8 @@
         "nro_contrato": "38/2016",
         "periodo": 2016,
         "plurianual": "No",
-        "proveedor": "MILTON EFRAIN LOPEZ MENDOZA"
+        "proveedor": "MILTON EFRAIN LOPEZ MENDOZA",
+        "rescindido": "No"
     },
     "38/2017 335605": {
         "RUC": "945999-5",
@@ -906,6 +1031,7 @@
         "convocante": "Municipalidad de Hernandarias",
         "fecha_firma": "16/11/2017",
         "id_licitacion": 335605,
+        "link_contrato": "",
         "monto_adjudicado": 263483683,
         "monto_ampliacion": 0,
         "monto_fonacide": 263483683,
@@ -915,7 +1041,8 @@
         "nro_contrato": "38/2017",
         "periodo": 2017,
         "plurianual": "No",
-        "proveedor": "ANA MARIA ALFONSO RIVEROS"
+        "proveedor": "ANA MARIA ALFONSO RIVEROS",
+        "rescindido": "No"
     },
     "38/2018 351534": {
         "RUC": "2865329-7",
@@ -923,6 +1050,7 @@
         "convocante": "Municipalidad de Hernandarias",
         "fecha_firma": "18/12/2018",
         "id_licitacion": 351534,
+        "link_contrato": "https://drive.google.com/open?id=1tCzrStkvDJAVDeB6gk6H7YJOl5ruQKcB",
         "monto_adjudicado": 245708354,
         "monto_ampliacion": 0,
         "monto_fonacide": 245708354,
@@ -932,7 +1060,8 @@
         "nro_contrato": "38/2018",
         "periodo": 2018,
         "plurianual": "Si",
-        "proveedor": "NELSON ROGELIO PEREIRA FLOR"
+        "proveedor": "NELSON ROGELIO PEREIRA FLOR",
+        "rescindido": "No"
     },
     "39/2014 281560": {
         "RUC": "80054076-0",
@@ -940,6 +1069,7 @@
         "convocante": "Municipalidad de Hernandarias",
         "fecha_firma": "17/11/2014",
         "id_licitacion": 281560,
+        "link_contrato": "https://drive.google.com/open?id=11tUQYizH7p7gOQF2j6ZosJCiy8dF25yJ",
         "monto_adjudicado": 175123589,
         "monto_ampliacion": 0,
         "monto_fonacide": 105528120,
@@ -949,7 +1079,8 @@
         "nro_contrato": "39/2014",
         "periodo": 2014,
         "plurianual": "Si",
-        "proveedor": "Perez & Aguayo S.R.L."
+        "proveedor": "Perez & Aguayo S.R.L.",
+        "rescindido": "No"
     },
     "39/2016 318234": {
         "RUC": "80024870-8",
@@ -957,6 +1088,7 @@
         "convocante": "Municipalidad de Hernandarias",
         "fecha_firma": "15/11/2016",
         "id_licitacion": 318234,
+        "link_contrato": "",
         "monto_adjudicado": 68594000,
         "monto_ampliacion": 0,
         "monto_fonacide": 68594000,
@@ -966,7 +1098,8 @@
         "nro_contrato": "39/2016",
         "periodo": 2016,
         "plurianual": "No",
-        "proveedor": "NORESTE S.A."
+        "proveedor": "NORESTE S.A.",
+        "rescindido": "No"
     },
     "39/2017 335605": {
         "RUC": "2951246-8",
@@ -974,6 +1107,7 @@
         "convocante": "Municipalidad de Hernandarias",
         "fecha_firma": "16/11/2017",
         "id_licitacion": 335605,
+        "link_contrato": "",
         "monto_adjudicado": 307743300,
         "monto_ampliacion": 0,
         "monto_fonacide": 307743300,
@@ -983,7 +1117,8 @@
         "nro_contrato": "39/2017",
         "periodo": 2017,
         "plurianual": "No",
-        "proveedor": "EVER ADAN AMARILLA OCAMPOS"
+        "proveedor": "EVER ADAN AMARILLA OCAMPOS",
+        "rescindido": "No"
     },
     "39/2018 351534": {
         "RUC": "859999-8",
@@ -991,6 +1126,7 @@
         "convocante": "Municipalidad de Hernandarias",
         "fecha_firma": "18/12/2018",
         "id_licitacion": 351534,
+        "link_contrato": "https://drive.google.com/open?id=1ZZiqS_k0VQeqoA_Epvw-lRXJSow2mIN2",
         "monto_adjudicado": 240046000,
         "monto_ampliacion": 0,
         "monto_fonacide": 240046000,
@@ -1000,7 +1136,8 @@
         "nro_contrato": "39/2018",
         "periodo": 2018,
         "plurianual": "Si",
-        "proveedor": "Ruben Casco Escobar"
+        "proveedor": "Ruben Casco Escobar",
+        "rescindido": "No"
     },
     "40/2014 281562": {
         "RUC": "811116-2",
@@ -1008,6 +1145,7 @@
         "convocante": "Municipalidad de Hernandarias",
         "fecha_firma": "17/11/2014",
         "id_licitacion": 281562,
+        "link_contrato": "https://drive.google.com/open?id=1C1T7uGR7Ye7fTA57YLxBF0F63faK3fhi",
         "monto_adjudicado": 403550000,
         "monto_ampliacion": 0,
         "monto_fonacide": 242149020,
@@ -1017,7 +1155,8 @@
         "nro_contrato": "40/2014",
         "periodo": 2014,
         "plurianual": "Si",
-        "proveedor": "CAYO MARCIAL TABOADA MONTANIA"
+        "proveedor": "CAYO MARCIAL TABOADA MONTANIA",
+        "rescindido": "No"
     },
     "40/2017 335607": {
         "RUC": "400553-8",
@@ -1025,6 +1164,7 @@
         "convocante": "Municipalidad de Hernandarias",
         "fecha_firma": "16/11/2017",
         "id_licitacion": 335607,
+        "link_contrato": "",
         "monto_adjudicado": 386109457,
         "monto_ampliacion": 0,
         "monto_fonacide": 386109457,
@@ -1034,7 +1174,8 @@
         "nro_contrato": "40/2017",
         "periodo": 2017,
         "plurianual": "No",
-        "proveedor": "JUAN AGUSTIN CANATTA ALVAREZ"
+        "proveedor": "JUAN AGUSTIN CANATTA ALVAREZ",
+        "rescindido": "No"
     },
     "41/2014 281555": {
         "RUC": "3594985-6",
@@ -1042,6 +1183,7 @@
         "convocante": "Municipalidad de Hernandarias",
         "fecha_firma": "17/11/2014",
         "id_licitacion": 281555,
+        "link_contrato": "https://drive.google.com/open?id=1hlJkeF9bg-lf-rqDAlEkbMNNeLpENYhM",
         "monto_adjudicado": 226950000,
         "monto_ampliacion": 0,
         "monto_fonacide": 136703118,
@@ -1051,7 +1193,8 @@
         "nro_contrato": "41/2014",
         "periodo": 2014,
         "plurianual": "Si",
-        "proveedor": "Juan Carlos Torres Duarte"
+        "proveedor": "Juan Carlos Torres Duarte",
+        "rescindido": "No"
     },
     "42/2014 281563": {
         "RUC": "3594985-6",
@@ -1059,6 +1202,7 @@
         "convocante": "Municipalidad de Hernandarias",
         "fecha_firma": "17/11/2014",
         "id_licitacion": 281563,
+        "link_contrato": "https://drive.google.com/open?id=1bdAHqjaPmyY-rkiEL0zs6IzI81spOCye",
         "monto_adjudicado": 300000000,
         "monto_ampliacion": 0,
         "monto_fonacide": 180588060,
@@ -1068,7 +1212,8 @@
         "nro_contrato": "42/2014",
         "periodo": 2014,
         "plurianual": "Si",
-        "proveedor": "Juan Carlos Torres Duarte"
+        "proveedor": "Juan Carlos Torres Duarte",
+        "rescindido": "No"
     },
     "42/2014 284035": {
         "RUC": "3594985-6",
@@ -1076,6 +1221,7 @@
         "convocante": "Municipalidad de Hernandarias",
         "fecha_firma": "12/12/2014",
         "id_licitacion": 284035,
+        "link_contrato": "https://drive.google.com/open?id=1Z6Jwon59XGAkkLTayykQOt6NeT3BfRG3",
         "monto_adjudicado": 418000000,
         "monto_ampliacion": 0,
         "monto_fonacide": 252000000,
@@ -1085,7 +1231,8 @@
         "nro_contrato": "42/2014",
         "periodo": 2014,
         "plurianual": "Si",
-        "proveedor": "Juan Carlos Torres Duarte"
+        "proveedor": "Juan Carlos Torres Duarte",
+        "rescindido": "No"
     },
     "43/2015 300521": {
         "RUC": "80006730-4",
@@ -1093,6 +1240,7 @@
         "convocante": "Municipalidad de Hernandarias",
         "fecha_firma": "11/12/2015",
         "id_licitacion": 300521,
+        "link_contrato": "https://drive.google.com/open?id=14dYr3krU9JQHE_Zpoj-6sLl0uxtHI0Zk",
         "monto_adjudicado": 4020725608,
         "monto_ampliacion": 0,
         "monto_fonacide": 0,
@@ -1102,7 +1250,8 @@
         "nro_contrato": "43/2015",
         "periodo": 2015,
         "plurianual": "Si",
-        "proveedor": "CONSTRUCTORA ACARAY S.A."
+        "proveedor": "CONSTRUCTORA ACARAY S.A.",
+        "rescindido": "No"
     },
     "44/2014 283191": {
         "RUC": "80005531-4",
@@ -1110,6 +1259,7 @@
         "convocante": "Municipalidad de Hernandarias",
         "fecha_firma": "11/12/2014",
         "id_licitacion": 283191,
+        "link_contrato": "https://drive.google.com/open?id=19hfCeCNs7nY3mLPs25Mo0g_ucoCPCmvI",
         "monto_adjudicado": 3824892841,
         "monto_ampliacion": 764000000,
         "monto_fonacide": -1,
@@ -1119,7 +1269,8 @@
         "nro_contrato": "44/2014",
         "periodo": 2014,
         "plurianual": "Si",
-        "proveedor": "TECNOEDIL S.A. CONSTRUCTORA"
+        "proveedor": "TECNOEDIL S.A. CONSTRUCTORA",
+        "rescindido": "No"
     },
     "51/2016 318733": {
         "RUC": "1736766-2",
@@ -1127,6 +1278,7 @@
         "convocante": "Municipalidad de Hernandarias",
         "fecha_firma": "20/12/2016",
         "id_licitacion": 318733,
+        "link_contrato": "",
         "monto_adjudicado": 154786300,
         "monto_ampliacion": 0,
         "monto_fonacide": 79706200,
@@ -1136,6 +1288,7 @@
         "nro_contrato": "51/2016",
         "periodo": 2016,
         "plurianual": "Si",
-        "proveedor": "EMIGDIO JAVIER MONZON MARTINEZ"
+        "proveedor": "EMIGDIO JAVIER MONZON MARTINEZ",
+        "rescindido": "No"
     }
 }
