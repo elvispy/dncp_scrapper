@@ -2,7 +2,7 @@
 """
 Created on Wed Aug 21 11:24:05 2019
 
-@author: Hernán
+@author: Hernán & Elvis
 """
 
 import os
@@ -11,7 +11,17 @@ import selenium.webdriver.support.ui as UI
 
 from selenium import webdriver
 
-from time import sleep    
+from time import sleep
+
+def rescision_contrato(driver):
+    xp_ul_tabs = '/html/body/div[2]/ul'
+    ul_tabs = driver.find_element_by_xpath(xp_ul_tabs)
+    try:
+        rescisiones = ul_tabs.find_element_by_link_text("Rescisiones de Contrato").get_attribute('href')
+        rescisiones = rescisiones.replace('/rescisiones-contrato.html','.html#rescisiones')
+        return "Si"  
+    except:
+        return "No"
 
 
 def obtener_datos(driver):
@@ -28,7 +38,8 @@ def obtener_datos(driver):
         'nro_contrato': '//*[@id="datos_contrato"]/section[1]/div/div/div[3]/div[4]',
         'monto_adjudicado':'//*[@id="datos_contrato"]/section[1]/div/div/div[3]/div[2]',
         'tags':'//*[@id="datos_contrato"]/div[2]/span',
-        'RUC':'//*[@id="datos_contrato"]/section[1]/div/div/div[1]/div[4]'
+        'RUC':'//*[@id="datos_contrato"]/section[1]/div/div/div[1]/div[4]',
+        'link_contrato':''
         }
     
 
@@ -41,7 +52,8 @@ def obtener_datos(driver):
                 
             if key == 'nombre_empresa':
                 continue
-
+            elif key == 'link_contrato':
+                info = ''
             elif key != 'tags' :
                 info = driver.find_element_by_xpath(datos[key]).text 
             else:
@@ -61,6 +73,8 @@ def obtener_datos(driver):
             
             licitacion.update({key:''})
             pass
+
+    licitacion.update({"rescindido":rescision_contrato(driver)})
 
     xp_new_link = '//*[@id="datos_contrato"]/div[1]/div/div/ul/li[4]/a'
     

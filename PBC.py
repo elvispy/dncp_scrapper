@@ -54,9 +54,11 @@ def PBC(driver):
             if cols[0].text == 'Pliego de bases y Condiciones':
                 #print('Se encontró el PBC')
                 #Hacer click en checkbox
-                xp_checkbox_condiciones = '//*[@id="checkboxSeccionesEstandares"]'
-                driver.find_element_by_xpath(xp_checkbox_condiciones).click()
- 
+                try:
+                    xp_checkbox_condiciones = '//*[@id="checkboxSeccionesEstandares"]'
+                    driver.find_element_by_xpath(xp_checkbox_condiciones).click()
+                except:
+                     continue
                 cols[-1].find_element_by_tag_name("a").click()
 
                 #Check the file extension to handle it properly

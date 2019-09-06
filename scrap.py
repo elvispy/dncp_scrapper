@@ -110,10 +110,11 @@ def main(municipio = "Hernandarias", year = datetime.datetime.now().year):
             nombres_licitacion =  driver.find_elements_by_xpath(xp_nombres_licit)
             etapas_licit =  driver.find_elements_by_xpath(xp_etapas_licit)
 
+
             loop_page(driver, nombres_licitacion, etapas_licit, year, path)
             
         except Exception as e:
-            print(e)
+            raise e
             print("En cristiano: Posiblemente no hay segunda pagina")
 
         
@@ -121,7 +122,7 @@ def main(municipio = "Hernandarias", year = datetime.datetime.now().year):
         
     
     driver.close()
-    len(solo_contratos)
+
     return solo_contratos
 
 if __name__ == '__main__':

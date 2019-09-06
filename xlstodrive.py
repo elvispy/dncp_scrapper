@@ -1,17 +1,16 @@
 import os
 
-import json
-
 from pydrive.auth import GoogleAuth
 from pydrive.drive import GoogleDrive
 
 import openpyxl
 from openpyxl.styles import Font, Alignment, colors
+
 import glob
 import datetime
 
 
-#Data for writing on excel
+#Data to be written on excel
 encabezado = {
     1 :'id_licitacion',
     2 :'nro_contrato',
@@ -23,11 +22,13 @@ encabezado = {
     8 :'monto_fonacide',
     9 :'periodo',
     10:'plurianual',
-    11:'categoria'
+    11:'categoria',
+    12:'rescindido',
+    13:'link_contrato'
     }
 
 
-#Data to upload to the cloud (Hernandarias district
+#Data to upload to the cloud (Hernandarias district)
 contratos_id = '14Ab05yUVz0-VH8vU83G0cIVfIgsgvUSa'
 years_id = {2014: '11k3wyoWUn19kKsF4HjTvY1klpBFoDNTH',
             2019: '1GPJwZsigvVV1rMuKWohFrXN8sgzDykIP',
@@ -162,8 +163,7 @@ def upload_to_cloud(drive, year_id):
 
     #Try to match local and
     for folder in local_folders:
-        #Reset Current Working directory
-        os.chdir(cwd)
+        
         #This variable will check whether the folder was found on the could or not
         found = False
         #Getting the characteristics of both folders, to compare them
@@ -258,8 +258,9 @@ def upload_to_cloud(drive, year_id):
             is_amp = False
 
             for title in elements:
-                if "Ampliacion (CC)" in title:
-                    is_amp =True
+                if "ampliacion (cc)" in title:
+                    is_amp = True
+                    break
 
             #If not, upload it
             if not is_amp:
@@ -307,82 +308,121 @@ def upload_to_cloud(drive, year_id):
 
                 file.Upload()
                 print("Uploaded {}".format(pbc_file))
+
+        #Reset Current Working directory
+        os.chdir(cwd)
+        
+def get_links(drive, contratos, year_id):
+
+    year_folder = drive.ListFile({'q':"'{}' in parents and trashed=false".format(year_id)}).GetList()
+
+    for drive_contract in year_folder:
+
+        for local_contract in contratos:
+            if str(local_contract['nro_contrato']) == drive_contract['title'].split(" ")[0] and \
+               str(local_contract['id_licitacion']) == drive_contract['title'].split(" ")[1]:
+
+                match_id = drive_contract['id']
+
+                files_in_drive = drive.ListFile({'q':"'{}' in parents and trashed=false".format(match_id)}).GetList()
+
+                contract_link = [file for file in files_in_drive if (("contrato" in file['title'].lower()) and \
+                                                                     not("ampliacion" in file['title'].lower()))][0]
+                contract_link = 'https://drive.google.com/open?id={}'.format(contract_link['id']) 
+
+                #Beware!
+                local_contract.update({'link_contrato':contract_link})
+
+
+    return contratos
+                
         
     
+    
 
-
-def main(contratos = [], year = datetime.datetime.now().year, exceptions = [], municipio = "Hernandarias"):
-
-
-    #Exclude Exceptions
-    copy_contratos = []
-    for contrato in contratos:
-        if not ("{} {}".format(contrato['id_licitacion'], contrato['nro_contrato']) in exceptions):
-            copy_contratos.append(contrato)
-
-    contratos = copy_contratos
-    del copy_contratos
-            
+def main(contratos = [], year = datetime.datetime.now().year, exceptions = [], municipio = "Hernandarias", excel = True,
+         upto= True):
 
     drive = checkcredentials()
     
-
-    hern_id = '1B3-A1aznOtuSijnf-OCvZDXPKBxYEgVr' #this is the id of the folder
-
-    #Check if there is an excel file in path destination, if so, remove it.
-    if len(glob.glob(os.getcwd() + "\\Temps{}\\*.xlsx".format(municipio))) > 0:
-        for file in glob.glob(os.getcwd() + "\\Temps{}\\*.xlsx".format(municipio)):
-            os.remove(file)
-
-    #Download the file
-    list2 = drive.ListFile(
-        {'q':"'%s' in parents and trashed=false" % hern_id}).GetList()
-    xlsxData = [a for a in list2 if "Resumen Contratos" in a['title']][0]
-
-    file = drive.CreateFile({'id':xlsxData['id']})
-
-    os.chdir("./Temps{}".format(municipio))
-
-    file.GetContentFile(xlsxData['title'])
-
-    #Open the file on both reading and writing mode
-    book = openpyxl.load_workbook(xlsxData['title'])
-    sheet = book['SoloContratos']
+    #Lets upload the files
+    os.chdir("./Temps{}/{}".format(municipio, year))
 
   
-    #Update the data, if necessary
-    remaining_contratos = overwrite(sheet, contratos)
-  
-    #See how much space do we need to store the data:
-    n = find_min(sheet, len(remaining_contratos))
- 
-    #Write the remaining contratos
-    writehere(sheet, remaining_contratos, n)
-
-    
-  
-    #Update the file
-    book.save(xlsxData['title'])
-
-    #Upload to Drive
-    file.SetContentFile(xlsxData['title'])
-
-
-
-
-    #file.Upload()
-
-
-    
-    if os.path.isdir("./"+str(year)):
-        os.chdir("./"+str(year))
-        
-    #Now Upload The Append Files, if neccesary
-
     year_id = years_id[year]
-    
-    upload_to_cloud(drive, year_id)
 
+    #Now Upload The Append Files, if neccesary
+    
+    if upto:
+        upload_to_cloud(drive, year_id)
+
+    contratos = get_links(drive, contratos, year_id)
+    contratos_complete = contratos
+    #Step back
+    os.chdir(os.path.dirname(os.getcwd()))
+
+    if excel:
+        #Exclude Exceptions
+        copy_contratos = []
+        for contrato in contratos:
+            if not ("{} {}".format(contrato['id_licitacion'], contrato['nro_contrato']) in exceptions):
+                copy_contratos.append(contrato)
+
+        contratos = copy_contratos
+        del copy_contratos
+            
+        
+        hern_id = '1B3-A1aznOtuSijnf-OCvZDXPKBxYEgVr'
+        
+
+        #Check if there is an excel file in path destination, if so, remove it.
+        if len(glob.glob(os.getcwd() + "\\*.xlsx")) > 0:
+            for file in glob.glob(os.getcwd() + "\\*.xlsx"):
+                os.remove(file)
+
+        #Download the file
+        list2 = drive.ListFile(
+            {'q':"'%s' in parents and trashed=false" % hern_id}).GetList()
+        xlsxData = [a for a in list2 if "Resumen Contratos" in a['title']][0]
+
+        file = drive.CreateFile({'id':xlsxData['id']})
+        
+
+  
+        file.GetContentFile(xlsxData['title'])
+
+        #Open the file on both reading and writing mode
+        book = openpyxl.load_workbook(xlsxData['title'])
+        sheet = book['SoloContratos']
+
+      
+        #Update the data, if necessary
+        remaining_contratos = overwrite(sheet, contratos)
+      
+        #See how much space do we need to store the data:
+        n = find_min(sheet, len(remaining_contratos))
+     
+        #Write the remaining contratos
+        writehere(sheet, remaining_contratos, n)
+
+        
+      
+        #Update the file
+        book.save(xlsxData['title'])
+
+        #Upload to Drive
+        file.SetContentFile(xlsxData['title'])
+
+
+
+        
+        file.Upload()
+    
+    os.chdir(os.path.dirname(os.getcwd()))
+    
+  
+    return contratos_complete
+    
     
 if __name__ == '__main__':
 

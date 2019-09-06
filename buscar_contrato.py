@@ -17,7 +17,7 @@ def buscar_contrato(convocante, year, driver):
 
     xp_year_inicio = '//*[@id="fecha_desde"]'
     xp_year_final = '//*[@id="fecha_hasta"]'
-    xp_tipo_fecha = '//*[@id="tipo_fecha"]/option[3]'
+    xp_tipo_fecha = "//*[contains(text(), 'Fecha de firma del contrato')]"
     
     year_inicio = '01-01-{}'.format(year)
     year_final = '31-12-{}'.format(year)

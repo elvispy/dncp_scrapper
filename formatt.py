@@ -31,7 +31,7 @@ def main(dato):
 
         dato['categoria'] = 'Alimentacion Escolar'
 
-    elif cat == 23:
+    elif cat in [23, 24]:
 
         dato['categoria'] = 'Equipamientos'
 
