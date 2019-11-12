@@ -1,6 +1,9 @@
 # DNCP-Scrapper V1.0
 Python code to scrap DNCP website
 
+If you get an Exception due to some library not installed in your computer, please run setup.bat first, which will install
+all libraries needed before compilation.
+
 The current data flow is as follows:
 
 main.py is the central script, it will run all subsequent functions
@@ -8,7 +11,8 @@ main.py is the central script, it will run all subsequent functions
 xlstodrive.checkcredentials()
 
 This line is here because the compilation time is long and this script needs to check the credentials for drive, that's why
-its there
+its there. You will need to allow at some point use of less secure apps in your google account, since it will  download 
+data from google drive and then upload it again as an update.
 
 main.py + year + municipio ---> scrap.py
 
