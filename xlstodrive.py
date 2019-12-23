@@ -389,7 +389,7 @@ def main(contratos = [], year = datetime.datetime.now().year, exceptions = [], m
         
 
   
-        file.GetContentFile(xlsxData['title'])
+        file.GetContentFile(xlsxData['title'], mimetype = xlsxData['mimeType'])
 
         #Open the file on both reading and writing mode
         book = openpyxl.load_workbook(xlsxData['title'])
