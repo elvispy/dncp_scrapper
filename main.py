@@ -8,11 +8,11 @@ import savetojson
 
 
 #Settings
-year = 2018
+year = 2019
 municipio = 'Hernandarias'
 scrap_var = True #Want to scrap the website?
 up_to_cloud = False #Want to upload the data to drive?
-excel = False #Want to write on excel the results?
+excel = True #Want to write on excel the results?
 
 #This exception lists is in case there is a case my code can't handle, so it
 # can skip it write the id and the number of the contract

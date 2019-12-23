@@ -262,6 +262,7 @@ def main(driver, year, path, datos):
             print("Warning: Check Possible Error in Monto Fonacide (PDF) didn't match:")
             print(datos['id_licitacion'])
             print(datos['nro_contrato'])
+            print("File descargar_docs.py, line 265")
             print("--------------------")
             monto_fonacide = '-1'
         elif pdfPage.extractText().split("TOTAL:")[0][-len(monto_fonacide)-3] != '3':
