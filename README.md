@@ -4,6 +4,10 @@ Python code to scrap DNCP website
 If you get an Exception due to some library not installed in your computer, please run setup.bat first, which will install
 all libraries needed before compilation.
 
+Also, if you recieve the folowwing exception:
+This version of ChromeDriver only supports Chrome version ###
+You should probably update your chrome driver version at https://chromedriver.chromium.org/
+
 The current data flow is as follows:
 
 main.py is the central script, it will run all subsequent functions
