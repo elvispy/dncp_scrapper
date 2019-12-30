@@ -8,7 +8,7 @@ import savetojson
 
 
 #Settings
-year = 2019
+year = 2015
 municipio = 'Hernandarias'
 scrap_var = True #Want to scrap the website?
 up_to_cloud = False #Want to upload the data to drive?

@@ -383,13 +383,13 @@ def main(contratos = [], year = datetime.datetime.now().year, exceptions = [], m
         #Download the file
         list2 = drive.ListFile(
             {'q':"'%s' in parents and trashed=false" % hern_id}).GetList()
-        xlsxData = [a for a in list2 if "Resumen Contratos" in a['title']][0]
+        xlsxData = [a for a in list2 if "Resumen Contratos" in a['title']][1]
 
         file = drive.CreateFile({'id':xlsxData['id']})
         
 
   
-        file.GetContentFile(xlsxData['title'], mimetype = xlsxData['mimeType'])
+        file.GetContentFile(xlsxData['title'])
 
         #Open the file on both reading and writing mode
         book = openpyxl.load_workbook(xlsxData['title'])
